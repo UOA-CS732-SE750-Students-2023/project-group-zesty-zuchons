@@ -1,7 +1,7 @@
 # WebCrafter
 
 <p align="center">
-  <img src="./src/assets/logo.svg" width="350" />
+  <img src="./assets/logo.svg" width="350" />
   <h1>An extensible drag-and-drop website builder</h1>
   <a href="https://img.shields.io/badge/License-GPLv3-blue.svg">
     <img alt="Licence" src="https://img.shields.io/badge/License-GPLv3-blue.svg">
