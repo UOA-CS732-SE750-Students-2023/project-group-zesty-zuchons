@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="./assets/logo.svg" width="350" />
-  <h1>An extensible drag-and-drop website builder</h1>
+  <h1>An extensible lowcode website builder</h1>
   <a href="https://img.shields.io/badge/License-GPLv3-blue.svg">
     <img alt="Licence" src="https://img.shields.io/badge/License-GPLv3-blue.svg">
   </a>
@@ -17,7 +17,7 @@ TODO....
 
 ### Frontend
 
-This is a [Vite] project (https://vitejs.dev)
+This is a [Vite](https://vitejs.dev) project 
 
 ### Backend
 
@@ -62,8 +62,8 @@ TODO...
 
 ## Contributors
 
-- Zixuan Wen ()
-- Mianmian Zheng ()
-- Ziqi Zhong ()
-- Yue Wang ()
-- Qiufan Qian ()
+- Zixuan Wen (zwen655)
+- Mianmian Zheng (mzhe930)
+- Ziqi Zhong (zzho500)
+- Yue Wang (wany359)
+- Qiufan Qian (qqia320)
