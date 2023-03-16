@@ -21,7 +21,7 @@ This is a [Vite](https://vitejs.dev) project
 
 ### Backend
 
-The backend of the application is written with Express with MongoDB and a Mongoose database driver
+The backend of the application is written with Express with MongoDB
 
 ## Running Project
 
