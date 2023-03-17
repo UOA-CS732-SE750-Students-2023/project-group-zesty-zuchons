@@ -39,16 +39,18 @@ npm install
 npm run build
 ```
 
-to run in dev mode:
-
-```bash
-npm run dev
-```
-
 4. Run application
 
 ```bash
 npm run start
+```
+
+---
+
+to run in dev mode:
+
+```bash
+npm run dev
 ```
 
 ## Tests
