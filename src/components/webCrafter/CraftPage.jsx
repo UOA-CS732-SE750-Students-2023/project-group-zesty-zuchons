@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Paper } from "@mui/material";
+import { Grid, Paper, Box } from "@mui/material";
 
 import { Toolbox } from "./editor/Toolbox";
 import { SettingsPanel } from "./editor/SettingsPanel";
@@ -18,13 +18,18 @@ import {
 import { Editor, Frame, Element } from "@craftjs/core";
 
 export default function CraftPage() {
-  
   const craftPageStyles = {
-    container:{
-      height: '100%'
-    }
+    gridContainer:{
+      height: "calc(100% - 50px)"
+    },
+    container: {
+      height: "100%",
+    },
+    header: {
+      height: "20px",
+    },
   };
-
+  // TODO: merge topbar component with the main canvas component
   return (
     <div className="craft-page" style={craftPageStyles.container}>
       <Editor
@@ -37,9 +42,19 @@ export default function CraftPage() {
           CardBottom,
         }}
       >
+        <Box className="header" sx={{ borderBottom: 1, borderColor: "grey.300" }}>
+          <Grid container alignItems="left">
+            <img
+              src="../../../assets/logo.svg"
+              style={{ height: "50px", width: "50px" }}
+            ></img>
+            <img src="../../../assets/title.svg" style={{position: 'absolute', left: '30px', top:'-5px'}}></img>
+          </Grid>
+        </Box>
+        
         <Topbar />
-        <Grid container spacing={0} style={craftPageStyles.container}>
-          <Grid item xs={2}>
+        <Grid container spacing={0} style={craftPageStyles.gridContainer}>
+          <Grid item xs={2} sx={{ borderRight: 1, borderColor: "grey.300" }}>
             <Paper style={craftPageStyles.container}>
               <Toolbox />
             </Paper>
@@ -58,7 +73,7 @@ export default function CraftPage() {
               </Element>
             </Frame>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={3} sx={{ borderLeft: 1, borderColor: "grey.300" }}>
             <Paper style={craftPageStyles.container}>
               <SettingsPanel
                 className="setting-panel"

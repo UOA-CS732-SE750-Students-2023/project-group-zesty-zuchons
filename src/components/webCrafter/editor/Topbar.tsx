@@ -8,7 +8,7 @@ export const Topbar = () => {
     enabled: state.options.enabled,
   }));
   return (
-    <Box px={1} py={1} mt={3} mb={1} bgcolor="#cbe8e7">
+    <Box bgcolor="#cbe8e7">
       <Grid container alignItems="center">
         <Grid item xs>
           <FormControlLabel
