@@ -3,54 +3,22 @@ import React, { useState, useEffect } from "react";
 import { useNode } from "@craftjs/core";
 import {
   Button,
-  Grid,
+  ButtonGroup,
   FormControl,
   FormLabel,
-  RadioGroup,
-  Radio,
-  FormControlLabel,
-  Dialog,
-  DialogTitle,
-  Alert,
   TextField,
   Select,
   MenuItem,
   Typography,
 } from "@mui/material";
 
-// TODO: bind customized event to the button (need to enter js function)
-export interface MaterialButtonEventProps {
-  open: boolean;
-  currentFunction: string;
-  onClose: (value: string) => void;
-}
-function MaterialButtonDialog(props: MaterialButtonEventProps) {
-  const { open, onClose, currentFunction } = props;
-
-  const handleClose = () => {
-    onClose(currentFunction);
-  };
-
-  return (
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Set MaterialButton Event</DialogTitle>
-      <Alert severity="info">
-        {" "}
-        Note: Event must be written in javaScript format or otherwise can't be
-        compiled
-      </Alert>
-      <TextField
-        id="outlined-basic"
-        label="Outlined"
-        variant="outlined"
-        multiline
-        value={currentFunction}
-      ></TextField>
-    </Dialog>
-  );
-}
-
-export const MaterialButton = ({ size, variant, color, text }) => {
+export const MaterialButton = ({
+  size,
+  variant,
+  color,
+  text,
+  currentFunction,
+}) => {
   const {
     // declare connector in useNode() to enable drag for the component
     connectors: { connect, drag },
@@ -61,6 +29,10 @@ export const MaterialButton = ({ size, variant, color, text }) => {
       size={size}
       variant={variant}
       color={color}
+      onClick={function () {
+        let func = new Function(currentFunction);
+        return func();
+      }}
     >
       {text}
     </Button>
@@ -74,6 +46,7 @@ export const MaterialButton = ({ size, variant, color, text }) => {
    https://mui.com/material-ui/react-button/
 */
 const MaterialbuttonSetting = () => {
+  const [selectedBtn, setSelectedBtn] = React.useState(1);
   const {
     actions: { setProp },
     props,
@@ -83,51 +56,92 @@ const MaterialbuttonSetting = () => {
 
   return (
     <div>
-      <Typography component="div" variant="body1" mt={2}>
-        <FormControl size="small" component="fieldset">
-          <FormLabel component="legend">Size</FormLabel>
-          <Select
-            id="size-select"
-            value={props.size}
-            onChange={(e) => setProp((props) => (props.size = e.target.value))}
-          >
-            <MenuItem value="small">Small</MenuItem>
-            <MenuItem value="medium">Medium</MenuItem>
-            <MenuItem value="large">Large</MenuItem>
-          </Select>
-        </FormControl>
-      </Typography>
-      <Typography component="div" variant="body1" mt={2}>
-        <FormControl size="small" component="fieldset">
-          <FormLabel component="legend">Variant</FormLabel>
-          <Select
-            id="variant-select"
-            value={props.variant}
-            onChange={(e) =>
-              setProp((props) => (props.variant = e.target.value))
-            }
-          >
-            <MenuItem value="text">Text</MenuItem>
-            <MenuItem value="outlined">Outlined</MenuItem>
-            <MenuItem value="contained">Contained</MenuItem>
-          </Select>
-        </FormControl>
-      </Typography>
-      <Typography component="div" variant="body1" mt={2}>
-        <FormControl component="fieldset" size="small">
-          <FormLabel component="legend">Color</FormLabel>
-          <Select
-            id="color-select"
-            value={props.color}
-            onChange={(e) => setProp((props) => (props.color = e.target.value))}
-          >
-            <MenuItem value="primary">Primary</MenuItem>
-            <MenuItem value="secondary">Secondary</MenuItem>
-            <MenuItem value="success">Success</MenuItem>
-            <MenuItem value="error">Error</MenuItem>
-          </Select>
-        </FormControl>
-      </Typography>
+      <ButtonGroup disableElevation variant="contained" color="primary">
+        <Button
+          color={selectedBtn === 1 ? "primary" : "inherit"}
+          onClick={() => setSelectedBtn(1)}
+        >
+          Props
+        </Button>
+        <Button
+          color={selectedBtn === 2 ? "primary" : "inherit"}
+          onClick={() => setSelectedBtn(2)}
+        >
+          Event
+        </Button>
+      </ButtonGroup>
+
+      {selectedBtn == 1 ? (
+        <div>
+          <Typography component="div" variant="body1" mt={2}>
+            <FormControl size="small" component="fieldset">
+              <FormLabel component="legend">Size</FormLabel>
+              <Select
+                id="size-select"
+                value={props.size}
+                onChange={(e) =>
+                  setProp((props) => (props.size = e.target.value))
+                }
+              >
+                <MenuItem value="small">Small</MenuItem>
+                <MenuItem value="medium">Medium</MenuItem>
+                <MenuItem value="large">Large</MenuItem>
+              </Select>
+            </FormControl>
+          </Typography>
+          <Typography component="div" variant="body1" mt={2}>
+            <FormControl size="small" component="fieldset">
+              <FormLabel component="legend">Variant</FormLabel>
+              <Select
+                id="variant-select"
+                value={props.variant}
+                onChange={(e) =>
+                  setProp((props) => (props.variant = e.target.value))
+                }
+              >
+                <MenuItem value="text">Text</MenuItem>
+                <MenuItem value="outlined">Outlined</MenuItem>
+                <MenuItem value="contained">Contained</MenuItem>
+              </Select>
+            </FormControl>
+          </Typography>
+          <Typography component="div" variant="body1" mt={2}>
+            <FormControl component="fieldset" size="small">
+              <FormLabel component="legend">Color</FormLabel>
+              <Select
+                id="color-select"
+                value={props.color}
+                onChange={(e) =>
+                  setProp((props) => (props.color = e.target.value))
+                }
+              >
+                <MenuItem value="primary">Primary</MenuItem>
+                <MenuItem value="secondary">Secondary</MenuItem>
+                <MenuItem value="success">Success</MenuItem>
+                <MenuItem value="error">Error</MenuItem>
+              </Select>
+            </FormControl>
+          </Typography>
+        </div>
+      ) : (
+        <div>
+          <Typography component="div" variant="body1" mt={2}>
+            <FormControl component="fieldset" size="small">
+              <FormLabel component="legend">Click Event</FormLabel>
+              <TextField
+                id="outlined-basic"
+                label="Outlined"
+                variant="outlined"
+                multiline
+                value={props.currentFunction}
+                onChange={(e) => {
+                  setProp((props) => (props.currentFunction = e.target.value));
+                }}
+              ></TextField>
+            </FormControl>
+          </Typography>
+        </div>
+      )}
     </div>
   );
 };
@@ -141,7 +155,7 @@ MaterialButton.craft = {
     variant: "contained",
     color: "primary",
     text: "Click me",
-    currentFunction: "",
+    currentFunction: "console.log('hi')",
   },
   related: {
     settings: MaterialbuttonSetting,
