@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Typography, Grid, Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 
 import { Toolbox } from "./editor/Toolbox";
 import { SettingsPanel } from "./editor/SettingsPanel";
@@ -18,51 +18,56 @@ import {
 import { Editor, Frame, Element } from "@craftjs/core";
 
 export default function CraftPage() {
+  
+  const craftPageStyles = {
+    container:{
+      height: '100%'
+    }
+  };
+
   return (
-    <div>
-      <Typography variant="h5" align="center">
-        A super simple page editor
-      </Typography>
-      <div>
-        <Editor
-          resolver={{
-            Card,
-            MaterialButton,
-            Text,
-            Container,
-            CardTop,
-            CardBottom,
-          }}
-        >
-          <Topbar />
-          <Grid container spacing={3} style={{ paddingTop: "10px" }}>
-            <Grid item xs={3}>
-              <Paper>
+    <div className="craft-page" style={craftPageStyles.container}>
+      <Editor
+        resolver={{
+          Card,
+          MaterialButton,
+          Text,
+          Container,
+          CardTop,
+          CardBottom,
+        }}
+      >
+        <Topbar />
+        <Grid container spacing={0} style={craftPageStyles.container}>
+          <Grid item xs={2}>
+            <Paper style={craftPageStyles.container}>
               <Toolbox />
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <Frame>
-                <Element is={Container} padding={5} background="#eee" canvas>
-                  <Card />
-                  <MaterialButton size="small" variant="outlined">
-                    Click
-                  </MaterialButton>
-                  <Text size="small" text="Hi world!" />
-                  <Element is={Container} padding={5} background="#eee" canvas>
-                    <Text size="small" text="It's me again!" />
-                  </Element>
-                </Element>
-              </Frame>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper>
-                <SettingsPanel />
-              </Paper>
-            </Grid>
+            </Paper>
           </Grid>
-        </Editor>
-      </div>
+          <Grid item xs={7}>
+            <Frame style={craftPageStyles.container}>
+              <Element is={Container} padding={5} background="#eee" canvas>
+                <Card />
+                <MaterialButton size="small" variant="outlined">
+                  Click
+                </MaterialButton>
+                <Text size="small" text="Hi world!" />
+                <Element is={Container} padding={5} background="#eee" canvas>
+                  <Text size="small" text="It's me again!" />
+                </Element>
+              </Element>
+            </Frame>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper style={craftPageStyles.container}>
+              <SettingsPanel
+                className="setting-panel"
+                style={{ height: "inherit" }}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Editor>
     </div>
   );
 }
