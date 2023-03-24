@@ -17,7 +17,7 @@ TODO....
 
 ### Frontend
 
-This is a [Vite](https://vitejs.dev) project 
+This is a [Vite](https://vitejs.dev) project. Mainly use react.
 
 ### Backend
 
