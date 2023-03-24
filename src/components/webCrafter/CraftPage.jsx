@@ -48,7 +48,7 @@ export default function CraftPage() {
               src="../../../assets/logo.svg"
               style={{ height: "50px", width: "50px" }}
             ></img>
-            <img src="../../../assets/title.svg" style={{position: 'absolute', left: '30px', top:'-5px'}}></img>
+            <img src="../../../assets/title.svg" style={{position: 'absolute', left: '30px', top:'-10px'}}></img>
           </Grid>
         </Box>
         
