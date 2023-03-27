@@ -23,6 +23,7 @@ export const MaterialButton = ({
     // declare connector in useNode() to enable drag for the component
     connectors: { connect, drag },
   } = useNode();
+
   return (
     <Button
       ref={(ref) => connect(drag(ref))}
@@ -46,6 +47,7 @@ export const MaterialButton = ({
    https://mui.com/material-ui/react-button/
 */
 const MaterialbuttonSetting = () => {
+  // Use selectedBtn to keep track of the current selected setting panel
   const [selectedBtn, setSelectedBtn] = React.useState(1);
   const {
     actions: { setProp },
@@ -54,18 +56,32 @@ const MaterialbuttonSetting = () => {
     props: node.data.props,
   }));
 
+  const MaterialbuttonSettingStyle = {
+    select: {
+      minWidth: "200px",
+    },
+    button: {
+      minWidth: "120px",
+    },
+    textArea: {
+      minWidth: "120px",
+    },
+  };
+
   return (
     <div>
       <ButtonGroup disableElevation variant="contained" color="primary">
         <Button
           color={selectedBtn === 1 ? "primary" : "inherit"}
           onClick={() => setSelectedBtn(1)}
+          style={MaterialbuttonSettingStyle.button}
         >
           Props
         </Button>
         <Button
           color={selectedBtn === 2 ? "primary" : "inherit"}
           onClick={() => setSelectedBtn(2)}
+          style={MaterialbuttonSettingStyle.button}
         >
           Event
         </Button>
@@ -82,6 +98,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) =>
                   setProp((props) => (props.size = e.target.value))
                 }
+                style={MaterialbuttonSettingStyle.select}
               >
                 <MenuItem value="small">Small</MenuItem>
                 <MenuItem value="medium">Medium</MenuItem>
@@ -98,6 +115,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) =>
                   setProp((props) => (props.variant = e.target.value))
                 }
+                style={MaterialbuttonSettingStyle.select}
               >
                 <MenuItem value="text">Text</MenuItem>
                 <MenuItem value="outlined">Outlined</MenuItem>
@@ -114,6 +132,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) =>
                   setProp((props) => (props.color = e.target.value))
                 }
+                style={MaterialbuttonSettingStyle.select}
               >
                 <MenuItem value="primary">Primary</MenuItem>
                 <MenuItem value="secondary">Secondary</MenuItem>
@@ -137,6 +156,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) => {
                   setProp((props) => (props.currentFunction = e.target.value));
                 }}
+                style={MaterialbuttonSettingStyle.textArea}
               ></TextField>
             </FormControl>
           </Typography>

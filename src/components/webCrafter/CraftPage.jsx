@@ -61,13 +61,13 @@ export default function CraftPage() {
           </Grid>
           <Grid item xs={7}>
             <Frame style={craftPageStyles.container}>
-              <Element is={Container} padding={5} background="#eee" canvas>
+              <Element is={Container} padding={5} canvas>
                 <Card />
                 <MaterialButton size="small" variant="outlined">
                   Click
                 </MaterialButton>
                 <Text size="small" text="Hi world!" />
-                <Element is={Container} padding={5} background="#eee" canvas>
+                <Element is={Container} padding={5} canvas>
                   <Text size="small" text="It's me again!" />
                 </Element>
               </Element>
