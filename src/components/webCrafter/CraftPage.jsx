@@ -13,6 +13,7 @@ import {
   CardTop,
   CardBottom,
   Text,
+  MaterialTextField
 } from "./pageComponents/exportComponents";
 
 import { Editor, Frame, Element } from "@craftjs/core";
@@ -40,6 +41,7 @@ export default function CraftPage() {
           Container,
           CardTop,
           CardBottom,
+          MaterialTextField
         }}
       >
         <Box className="header" sx={{ borderBottom: 1, borderColor: "grey.300" }}>

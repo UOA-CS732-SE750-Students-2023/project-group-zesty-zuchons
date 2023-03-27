@@ -52,7 +52,7 @@ export const SettingsPanel = () => {
         <Grid item>
           <Box pb={2}>
             <Grid item xs>
-              <Typography variant="subtitle1">Prop</Typography>
+              <Typography variant="subtitle1">Settings</Typography>
             </Grid>
           </Box>
         </Grid>
