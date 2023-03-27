@@ -10,7 +10,10 @@ import {
   Select,
   MenuItem,
   Typography,
+  Slider,
 } from "@mui/material";
+
+import componentDefaultStyle from "../../componentDefaultStyle.js";
 
 export const MaterialButton = ({
   size,
@@ -18,14 +21,27 @@ export const MaterialButton = ({
   color,
   text,
   currentFunction,
+  padding,
+  margin,
 }) => {
   const {
     // declare connector in useNode() to enable drag for the component
     connectors: { connect, drag },
-  } = useNode();
+    isActive,
+  } = useNode((node) => ({
+    isActive: node.events.selected,
+  }));
+
+  const [hover, setHover] = useState(false);
 
   return (
     <Button
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
       ref={(ref) => connect(drag(ref))}
       size={size}
       variant={variant}
@@ -33,6 +49,12 @@ export const MaterialButton = ({
       onClick={function () {
         let func = new Function(currentFunction);
         return func();
+      }}
+      style={{
+        padding: `${padding}px`,
+        margin: `${margin}px`,
+        ...(hover ? componentDefaultStyle.componentHover : null),
+        ...(isActive ? componentDefaultStyle.componentFocus : null),
       }}
     >
       {text}
@@ -51,37 +73,29 @@ const MaterialbuttonSetting = () => {
   const [selectedBtn, setSelectedBtn] = React.useState(1);
   const {
     actions: { setProp },
+    padding,
+    margin,
     props,
   } = useNode((node) => ({
     props: node.data.props,
+    padding: node.data.props.padding,
+    margin: node.data.props.margin,
   }));
-
-  const MaterialbuttonSettingStyle = {
-    select: {
-      minWidth: "200px",
-    },
-    button: {
-      minWidth: "120px",
-    },
-    textArea: {
-      minWidth: "120px",
-    },
-  };
 
   return (
     <div>
-      <ButtonGroup disableElevation variant="contained" color="primary">
+      <ButtonGroup disableElevation variant="contained" color="primary" fullWidth>
         <Button
           color={selectedBtn === 1 ? "primary" : "inherit"}
           onClick={() => setSelectedBtn(1)}
-          style={MaterialbuttonSettingStyle.button}
+          style={componentDefaultStyle.settingPanelButton}
         >
           Props
         </Button>
         <Button
           color={selectedBtn === 2 ? "primary" : "inherit"}
           onClick={() => setSelectedBtn(2)}
-          style={MaterialbuttonSettingStyle.button}
+          style={componentDefaultStyle.settingPanelButton}
         >
           Event
         </Button>
@@ -90,7 +104,7 @@ const MaterialbuttonSetting = () => {
       {selectedBtn == 1 ? (
         <div>
           <Typography component="div" variant="body1" mt={2}>
-            <FormControl size="small" component="fieldset">
+            <FormControl size="small" component="fieldset" fullWidth>
               <FormLabel component="legend">Size</FormLabel>
               <Select
                 id="size-select"
@@ -98,7 +112,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) =>
                   setProp((props) => (props.size = e.target.value))
                 }
-                style={MaterialbuttonSettingStyle.select}
+                style={componentDefaultStyle.settingPanelSelect}
               >
                 <MenuItem value="small">Small</MenuItem>
                 <MenuItem value="medium">Medium</MenuItem>
@@ -107,7 +121,7 @@ const MaterialbuttonSetting = () => {
             </FormControl>
           </Typography>
           <Typography component="div" variant="body1" mt={2}>
-            <FormControl size="small" component="fieldset">
+            <FormControl size="small" component="fieldset" fullWidth>
               <FormLabel component="legend">Variant</FormLabel>
               <Select
                 id="variant-select"
@@ -115,7 +129,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) =>
                   setProp((props) => (props.variant = e.target.value))
                 }
-                style={MaterialbuttonSettingStyle.select}
+                style={componentDefaultStyle.settingPanelSelect}
               >
                 <MenuItem value="text">Text</MenuItem>
                 <MenuItem value="outlined">Outlined</MenuItem>
@@ -124,7 +138,7 @@ const MaterialbuttonSetting = () => {
             </FormControl>
           </Typography>
           <Typography component="div" variant="body1" mt={2}>
-            <FormControl component="fieldset" size="small">
+            <FormControl component="fieldset" size="small" fullWidth> 
               <FormLabel component="legend">Color</FormLabel>
               <Select
                 id="color-select"
@@ -132,7 +146,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) =>
                   setProp((props) => (props.color = e.target.value))
                 }
-                style={MaterialbuttonSettingStyle.select}
+                style={componentDefaultStyle.settingPanelSelect}
               >
                 <MenuItem value="primary">Primary</MenuItem>
                 <MenuItem value="secondary">Secondary</MenuItem>
@@ -141,11 +155,43 @@ const MaterialbuttonSetting = () => {
               </Select>
             </FormControl>
           </Typography>
+          <Typography component="div" variant="body1" mt={2}>
+            <FormControl size="small" component="fieldset" fullWidth>
+              <FormLabel component="legend">Padding</FormLabel>
+              <Slider
+                style={componentDefaultStyle.settingPanelSlide}
+                value={padding || 10}
+                step={1}
+                min={1}
+                max={20}
+                valueLabelDisplay="auto"
+                onChange={(_, value) => {
+                  setProp((props) => (props.padding = value));
+                }}
+              />
+            </FormControl>
+          </Typography>
+          <Typography component="div" variant="body1" mt={2}>
+            <FormControl size="small" component="fieldset" fullWidth>
+              <FormLabel component="legend">Margin</FormLabel>
+              <Slider
+                style={componentDefaultStyle.settingPanelSlide}
+                value={margin || 5}
+                step={1}
+                min={1}
+                max={20}
+                valueLabelDisplay="auto"
+                onChange={(_, value) => {
+                  setProp((props) => (props.margin = value));
+                }}
+              />
+            </FormControl>
+          </Typography>
         </div>
       ) : (
         <div>
           <Typography component="div" variant="body1" mt={2}>
-            <FormControl component="fieldset" size="small">
+            <FormControl component="fieldset" size="small" fullWidth>
               <FormLabel component="legend">Click Event</FormLabel>
               <TextField
                 id="outlined-basic"
@@ -156,7 +202,7 @@ const MaterialbuttonSetting = () => {
                 onChange={(e) => {
                   setProp((props) => (props.currentFunction = e.target.value));
                 }}
-                style={MaterialbuttonSettingStyle.textArea}
+                style={componentDefaultStyle.settingPanelTextArea}
               ></TextField>
             </FormControl>
           </Typography>
@@ -176,6 +222,8 @@ MaterialButton.craft = {
     color: "primary",
     text: "Click me",
     currentFunction: "console.log('hi')",
+    padding: 10,
+    margin: 5,
   },
   related: {
     settings: MaterialbuttonSetting,

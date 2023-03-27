@@ -7,8 +7,10 @@ import {
   FormLabel,
   Select,
   MenuItem,
-  TextField
+  TextField,
 } from "@mui/material";
+
+import componentDefaultStyle from "../../componentDefaultStyle.js";
 
 export const MaterialTextField = ({ defaultValue, size, variant }) => {
   const {
@@ -42,6 +44,7 @@ const MaterialTextFieldSettings = () => {
             id="size-select"
             value={props.size}
             onChange={(e) => setProp((props) => (props.size = e.target.value))}
+            style={componentDefaultStyle.settingPanelSelect}
           >
             <MenuItem value="small">Small</MenuItem>
             <MenuItem value="normal">Normal</MenuItem>
@@ -58,6 +61,7 @@ const MaterialTextFieldSettings = () => {
             onChange={(e) =>
               setProp((props) => (props.variant = e.target.value))
             }
+            style={componentDefaultStyle.settingPanelSelect}
           >
             <MenuItem value="filled">Filled</MenuItem>
             <MenuItem value="outlined">Outlined</MenuItem>

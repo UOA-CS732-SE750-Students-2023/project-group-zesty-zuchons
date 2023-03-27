@@ -31,33 +31,60 @@ export const SettingsPanel = () => {
   });
 
   const settingsPanelStyle = {
-    
-  }
+    selectedComponentHeader: {
+      borderBottom: "1px solid #e0e0e0",
+    },
+    selectedComponentTitle: {
+      fontSize: "15px",
+    },
+    selectedComponentForm: {
+      padding: "8px 8px",
+    },
+  };
 
   return selected ? (
-    <Box px={2} py={2}>
+    <Box>
       <Grid container direction="column" spacing={0}>
         <Grid item>
-          <Box pb={2}>
-            <Grid container alignItems="center">
+          <Box>
+            <Grid
+              container
+              alignItems="center"
+              style={settingsPanelStyle.selectedComponentHeader}
+              p={1}
+            >
               <Grid item xs>
-                <Typography variant="subtitle1">Selected</Typography>
+                <Typography
+                  variant="subtitle1"
+                  style={settingsPanelStyle.selectedComponentTitle}
+                >
+                  Selected
+                </Typography>
               </Grid>
               <Grid item>
-                <Chip size="small" color="primary" label={selected.name} />
+                <Chip
+                  size="small"
+                  color="primary"
+                  variant="outlined"
+                  label={selected.name}
+                />
               </Grid>
             </Grid>
           </Box>
         </Grid>
         <Grid item>
-          <Box pb={2}>
-            <Grid item xs>
+          <Box>
+            <Grid item xs p={1}>
               <Typography variant="subtitle1">Settings</Typography>
             </Grid>
           </Box>
         </Grid>
 
-        <FormControl size="small" component="fieldset">
+        <FormControl
+          size="small"
+          component="fieldset"
+          style={settingsPanelStyle.selectedComponentForm}
+        >
           {selected.settings && React.createElement(selected.settings)}
           {selected.isDeletable ? (
             <div style={{ paddingTop: "20px" }}>

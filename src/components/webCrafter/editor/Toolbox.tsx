@@ -8,14 +8,14 @@ import {
   MaterialButton,
   Container,
   Text,
-  MaterialTextField
+  MaterialTextField,
 } from "../pageComponents/exportComponents";
 
 export const Toolbox = () => {
   const { connectors, query } = useEditor();
-  const genDraggableIconFromRef = function(ref){
-    return ref
-  }
+  const genDraggableIconFromRef = function (ref) {
+    return ref;
+  };
   return (
     <Box px={2} py={2}>
       <Grid
@@ -79,11 +79,16 @@ export const Toolbox = () => {
         <Grid container direction="column" item>
           <Button
             variant="contained"
-            ref={(ref) => connectors.create(ref, <MaterialTextField
-              defaultValue="textField"
-              size="small"
-              variant="filled"
-            />)}
+            ref={(ref) =>
+              connectors.create(
+                ref,
+                <MaterialTextField
+                  defaultValue="textField"
+                  size="small"
+                  variant="filled"
+                />
+              )
+            }
           >
             TextField
           </Button>

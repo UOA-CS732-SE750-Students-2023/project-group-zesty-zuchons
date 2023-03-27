@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNode } from "@craftjs/core";
 import ContentEditable from "react-contenteditable";
 
-import { Slider, FormControl, FormLabel } from "@mui/material";
+import { Slider, FormControl, FormLabel, Typography } from "@mui/material";
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
@@ -55,38 +55,44 @@ const TextSettings = () => {
   const {
     actions: { setProp },
     fontSize,
-    padding
+    padding,
   } = useNode((node) => ({
     fontSize: node.data.props.fontSize,
-    padding: node.data.props.padding
+    padding: node.data.props.padding,
   }));
 
   return (
     <>
-      <FormControl size="small" component="fieldset">
-        <FormLabel component="legend">Font size</FormLabel>
-        <Slider
-          value={fontSize || 7}
-          step={1}
-          min={1}
-          max={50}
-          onChange={(_, value) => {
-            setProp((props) => (props.fontSize = value));
-          }}
-        />
-      </FormControl>
-      <FormControl size="small" component="fieldset">
-        <FormLabel component="legend">Padding</FormLabel>
-        <Slider
-          value={padding || 10}
-          step={1}
-          min={1}
-          max={20}
-          onChange={(_, value) => {
-            setProp((props) => (props.padding = value));
-          }}
-        />
-      </FormControl>
+      <Typography component="div" variant="body1">
+        <FormControl size="small" component="fieldset" fullWidth>
+          <FormLabel component="legend">Font size</FormLabel>
+          <Slider
+            value={fontSize || 7}
+            step={1}
+            min={1}
+            max={50}
+            valueLabelDisplay="auto"
+            onChange={(_, value) => {
+              setProp((props) => (props.fontSize = value));
+            }}
+          />
+        </FormControl>
+      </Typography>
+      <Typography component="div" variant="body1" mt={2}>
+        <FormControl size="small" component="fieldset" fullWidth>
+          <FormLabel component="legend">Padding</FormLabel>
+          <Slider
+            value={padding || 10}
+            step={1}
+            min={1}
+            max={20}
+            valueLabelDisplay="auto"
+            onChange={(_, value) => {
+              setProp((props) => (props.padding = value));
+            }}
+          />
+        </FormControl>
+      </Typography>
     </>
   );
 };
