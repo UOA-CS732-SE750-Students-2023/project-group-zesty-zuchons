@@ -8,6 +8,8 @@ import {
   FormLabel,
   Slider,
   Typography,
+  Divider,
+  Chip
 } from "@mui/material";
 
 import { MuiColorInput } from "mui-color-input";
@@ -47,7 +49,10 @@ export const ContainerSettings = () => {
   }));
   return (
     <div>
-      <Typography component="div" variant="body1">
+      <Divider textAlign="left" color="#e0e0e0">
+        <Chip size="small" variant="outlined" color="primary" label="styles" />
+      </Divider>
+      <Typography component="div" variant="body1" mt={1}>
         <FormControl fullWidth component="fieldset">
           <FormLabel component="legend">Background</FormLabel>
           <MuiColorInput
@@ -62,7 +67,11 @@ export const ContainerSettings = () => {
         <FormControl fullWidth component="fieldset">
           <FormLabel component="legend">Padding</FormLabel>
           <Slider
-            defaultValue={padding}
+            defaultValue={padding || 10}
+            valueLabelDisplay="auto"
+            step={1}
+            min={1}
+            max={50}
             onChange={(_, value) => setProp((props) => (props.padding = value))}
           />
         </FormControl>
@@ -74,7 +83,7 @@ export const ContainerSettings = () => {
 Container.craft = {
   props: {
     background: "#ffffff",
-    padding: 3,
+    padding: 10,
   },
   related: {
     settings: ContainerSettings,

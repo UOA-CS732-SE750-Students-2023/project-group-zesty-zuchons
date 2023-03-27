@@ -59,7 +59,7 @@ export const Card = ({ background, padding = 20 }) => {
 Card.craft = {
   props: {
     background: "#ffffff",
-    padding: 3,
+    padding: 10,
   },
   related: {
     settings: ContainerSettings,

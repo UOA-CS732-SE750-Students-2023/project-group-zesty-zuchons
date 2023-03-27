@@ -13,15 +13,15 @@ import {
   CardTop,
   CardBottom,
   Text,
-  MaterialTextField
+  MaterialTextField,
 } from "./pageComponents/exportComponents";
 
 import { Editor, Frame, Element } from "@craftjs/core";
 
 export default function CraftPage() {
   const craftPageStyles = {
-    gridContainer:{
-      height: "calc(100% - 50px)"
+    gridContainer: {
+      height: "calc(100% - 50px)",
     },
     container: {
       height: "100%",
@@ -41,19 +41,25 @@ export default function CraftPage() {
           Container,
           CardTop,
           CardBottom,
-          MaterialTextField
+          MaterialTextField,
         }}
       >
-        <Box className="header" sx={{ borderBottom: 1, borderColor: "grey.300" }}>
+        <Box
+          className="header"
+          sx={{ borderBottom: 1, borderColor: "grey.300" }}
+        >
           <Grid container alignItems="left">
             <img
               src="../../../assets/logo.svg"
               style={{ height: "50px", width: "50px" }}
             ></img>
-            <img src="../../../assets/title.svg" style={{position: 'absolute', left: '30px', top:'-10px'}}></img>
+            <img
+              src="../../../assets/title.svg"
+              style={{ position: "absolute", left: "30px", top: "-10px" }}
+            ></img>
           </Grid>
         </Box>
-        
+
         <Topbar />
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
           <Grid item xs={2} sx={{ borderRight: 1, borderColor: "grey.300" }}>

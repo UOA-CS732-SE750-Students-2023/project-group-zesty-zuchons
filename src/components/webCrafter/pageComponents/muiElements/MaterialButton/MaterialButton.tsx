@@ -11,6 +11,8 @@ import {
   MenuItem,
   Typography,
   Slider,
+  Divider,
+  Chip
 } from "@mui/material";
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
@@ -84,13 +86,18 @@ const MaterialbuttonSetting = () => {
 
   return (
     <div>
-      <ButtonGroup disableElevation variant="contained" color="primary" fullWidth>
+      <ButtonGroup
+        disableElevation
+        variant="contained"
+        color="primary"
+        fullWidth
+      >
         <Button
           color={selectedBtn === 1 ? "primary" : "inherit"}
           onClick={() => setSelectedBtn(1)}
           style={componentDefaultStyle.settingPanelButton}
         >
-          Props
+          Content
         </Button>
         <Button
           color={selectedBtn === 2 ? "primary" : "inherit"}
@@ -103,7 +110,10 @@ const MaterialbuttonSetting = () => {
 
       {selectedBtn == 1 ? (
         <div>
-          <Typography component="div" variant="body1" mt={2}>
+          <Divider textAlign="left" style={{paddingTop: "20px"}} color="#e0e0e0">
+            <Chip size="small" variant="outlined" color="primary" label="props" />
+          </Divider>
+          <Typography component="div" variant="body1" mt={1}>
             <FormControl size="small" component="fieldset" fullWidth>
               <FormLabel component="legend">Size</FormLabel>
               <Select
@@ -138,7 +148,7 @@ const MaterialbuttonSetting = () => {
             </FormControl>
           </Typography>
           <Typography component="div" variant="body1" mt={2}>
-            <FormControl component="fieldset" size="small" fullWidth> 
+            <FormControl component="fieldset" size="small" fullWidth>
               <FormLabel component="legend">Color</FormLabel>
               <Select
                 id="color-select"
@@ -155,7 +165,12 @@ const MaterialbuttonSetting = () => {
               </Select>
             </FormControl>
           </Typography>
-          <Typography component="div" variant="body1" mt={2}>
+
+          <Divider textAlign="left" style={{paddingTop: "20px"}} color="#e0e0e0">
+            <Chip size="small" variant="outlined" color="primary" label="styles" />
+          </Divider>
+
+          <Typography component="div" variant="body1" mt={1}>
             <FormControl size="small" component="fieldset" fullWidth>
               <FormLabel component="legend">Padding</FormLabel>
               <Slider

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNode } from "@craftjs/core";
 import ContentEditable from "react-contenteditable";
 
-import { Slider, FormControl, FormLabel, Typography } from "@mui/material";
+import { Slider, FormControl, FormLabel, Typography, Divider, Chip } from "@mui/material";
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
@@ -63,7 +63,10 @@ const TextSettings = () => {
 
   return (
     <>
-      <Typography component="div" variant="body1">
+      <Divider textAlign="left"  color="#e0e0e0">
+        <Chip size="small" variant="outlined" color="primary" label="styles" />
+      </Divider>
+      <Typography component="div" variant="body1" mt={1}>
         <FormControl size="small" component="fieldset" fullWidth>
           <FormLabel component="legend">Font size</FormLabel>
           <Slider

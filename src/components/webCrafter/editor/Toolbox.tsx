@@ -61,7 +61,7 @@ export const Toolbox = () => {
             ref={(ref) =>
               connectors.create(
                 ref,
-                <Element is={Container} padding={20} canvas />
+                <Element is={Container} canvas />
               )
             }
           >
