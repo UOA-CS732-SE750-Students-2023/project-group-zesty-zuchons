@@ -75,7 +75,12 @@ export const SettingsPanel = () => {
         <Grid item>
           <Box>
             <Grid item xs p={1}>
-              <Typography variant="subtitle1">Settings</Typography>
+              <Typography
+                variant="subtitle1"
+                style={settingsPanelStyle.selectedComponentTitle}
+              >
+                Settings
+              </Typography>
             </Grid>
           </Box>
         </Grid>

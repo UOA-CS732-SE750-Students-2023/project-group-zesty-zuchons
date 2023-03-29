@@ -51,11 +51,11 @@ export default function CraftPage() {
           <Grid container alignItems="left">
             <img
               src="../../../assets/logo.svg"
-              style={{ height: "50px", width: "50px" }}
+              style={{ height: "30px", width: "30px" }}
             ></img>
             <img
               src="../../../assets/title.svg"
-              style={{ position: "absolute", left: "30px", top: "-10px" }}
+              style={{ position: "absolute", left: "5px", top: "-22px" }}
             ></img>
           </Grid>
         </Box>
@@ -67,7 +67,7 @@ export default function CraftPage() {
               <Toolbox />
             </Paper>
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={8}>
             <Frame style={craftPageStyles.container}>
               <Element is={Container} padding={5} canvas>
                 <Card />
@@ -81,7 +81,7 @@ export default function CraftPage() {
               </Element>
             </Frame>
           </Grid>
-          <Grid item xs={3} sx={{ borderLeft: 1, borderColor: "grey.300" }}>
+          <Grid item xs={2} sx={{ borderLeft: 1, borderColor: "grey.300" }}>
             <Paper style={craftPageStyles.container}>
               <SettingsPanel
                 className="setting-panel"

@@ -9,13 +9,13 @@ export default {
     minWidth: "200px",
   },
   settingPanelButton: {
-    minWidth: "120px",
+    minWidth: "100px",
   },
   settingPanelTextArea: {
-    minWidth: "120px",
+    minWidth: "100px",
   },
   settingPanelSlide: {
-    minWidth: "200px"
+    minWidth: "180px"
   }
 
 };

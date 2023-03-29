@@ -63,7 +63,7 @@ const TextSettings = () => {
 
   return (
     <>
-      <Divider textAlign="left"  color="#e0e0e0">
+      <Divider textAlign="left" color="#e0e0e0">
         <Chip size="small" variant="outlined" color="primary" label="styles" />
       </Divider>
       <Typography component="div" variant="body1" mt={1}>
