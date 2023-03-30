@@ -12,13 +12,14 @@ import {
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
-export const MaterialTextField = ({ defaultValue, size, variant }) => {
+export const MaterialTextField = ({ defaultValue, size, variant /*完善下方setting panel时需同时将prop挂载到主元素上*/}) => {
   const {
     // declare connector in useNode() to enable drag for the component
     connectors: { connect, drag },
   } = useNode();
 
   return (
+    // 完善下方setting panel时需同时将prop挂载到主元素上
     <TextField
       ref={(ref) => connect(drag(ref))}
       size={size}
@@ -36,6 +37,8 @@ const MaterialTextFieldSettings = () => {
     props: node.data.props,
   }));
   return (
+    // 下方setting panel部分需完善，需要添加的可设置prop可参考 https://mui.com/material-ui/react-text-field/
+    // 具体怎样完善可参考下方代码，基本是通过下拉组件选择当前prop可选择的项，并更新对应prop的值
     <div>
       <Typography component="div" variant="body1" mt={2}>
         <FormControl size="small" component="fieldset">
@@ -74,6 +77,7 @@ const MaterialTextFieldSettings = () => {
 };
 
 MaterialTextField.craft = {
+  // 完善可配置prop后需要更新此处的默认prop
   props: {
     defaultValue: "Hi",
     size: "small",
