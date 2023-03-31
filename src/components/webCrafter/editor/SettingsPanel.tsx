@@ -51,6 +51,24 @@ export const SettingsPanel = () => {
               container
               alignItems="center"
               style={settingsPanelStyle.selectedComponentHeader}
+            >
+              <Grid item xs>
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    backgroundColor: '#1976d2',
+                    color: '#ffffff',
+                    paddingLeft: '8px',
+                    ...settingsPanelStyle.selectedComponentTitle}}
+                >
+                  Setting panel
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              alignItems="center"
+              style={settingsPanelStyle.selectedComponentHeader}
               p={1}
             >
               <Grid item xs>

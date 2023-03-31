@@ -16,14 +16,40 @@ export const Toolbox = () => {
   const genDraggableIconFromRef = function (ref) {
     return ref;
   };
+
+  const toolboxStyle = {
+    header: {
+      borderBottom: "1px solid #e0e0e0",
+    },
+    headerTitle: {
+      fontSize: "15px",
+    },
+  };
+
   return (
-    <Box px={2} py={2}>
+    <Box>
+      <Grid container alignItems="center">
+        <Grid item xs>
+          <Typography
+            variant="subtitle1"
+            style={{
+              backgroundColor: "#1976d2",
+              color: "#ffffff",
+              paddingLeft: "8px",
+              ...toolboxStyle.headerTitle,
+            }}
+          >
+            Components
+          </Typography>
+        </Grid>
+      </Grid>
       <Grid
         container
         direction="column"
         alignItems="center"
         justifyContent="center"
         columnSpacing={1}
+        p={2}
       >
         <Box pb={2}>
           <Typography>Drag to add</Typography>
@@ -59,10 +85,7 @@ export const Toolbox = () => {
           <Button
             variant="contained"
             ref={(ref) =>
-              connectors.create(
-                ref,
-                <Element is={Container} canvas />
-              )
+              connectors.create(ref, <Element is={Container} canvas />)
             }
           >
             Container

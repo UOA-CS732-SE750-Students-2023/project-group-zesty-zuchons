@@ -69,7 +69,7 @@ export default function CraftPage() {
           </Grid>
           <Grid item xs={8}>
             <Frame style={craftPageStyles.container}>
-              <Element is={Container} padding={5} canvas>
+              <Element is={Container} padding={30} canvas>
                 <Card />
                 <MaterialButton size="small" variant="outlined">
                   Click
