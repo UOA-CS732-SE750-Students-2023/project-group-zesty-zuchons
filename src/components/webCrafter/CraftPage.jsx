@@ -56,7 +56,16 @@ export default function CraftPage() {
         <Header />
 
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
-          <Grid item xs={2} sx={{ borderRight: 1, borderColor: "grey.300" }}>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              borderRight: 1,
+              borderColor: "grey.300",
+              height: "100%",
+              overflow: "auto",
+            }}
+          >
             <Paper style={craftPageStyles.container}>
               <Toolbox />
             </Paper>
@@ -75,7 +84,16 @@ export default function CraftPage() {
               </Element>
             </Frame>
           </Grid>
-          <Grid item xs={2} sx={{ borderLeft: 1, borderColor: "grey.300" }}>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              borderLeft: 1,
+              borderColor: "grey.300",
+              height: "100%",
+              overflow: "auto",
+            }}
+          >
             <Paper style={craftPageStyles.container}>
               <Grid
                 container

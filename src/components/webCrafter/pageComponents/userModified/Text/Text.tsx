@@ -3,11 +3,18 @@ import React, { useState, useEffect } from "react";
 import { useNode } from "@craftjs/core";
 import ContentEditable from "react-contenteditable";
 
-import { Slider, FormControl, FormLabel, Typography, Divider, Chip } from "@mui/material";
-
+import {
+  Slider,
+  FormControl,
+  FormLabel,
+  Typography,
+  Divider,
+  Chip,
+} from "@mui/material";
+import { MuiColorInput } from "mui-color-input";
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
-export const Text = ({ text, fontSize, padding }) => {
+export const Text = ({ text, fontSize, padding, color, bgColor, margin }) => {
   const {
     connectors: { connect, drag },
     isActive,
@@ -43,6 +50,10 @@ export const Text = ({ text, fontSize, padding }) => {
         style={{
           fontSize: `${fontSize}px`,
           padding: `${padding}px`,
+          margin: `${margin}px`,
+          color: `${color}`,
+          background: `${bgColor}`,
+
           ...(hover ? componentDefaultStyle.componentHover : null),
           ...(editable ? componentDefaultStyle.componentFocus : null),
         }}
@@ -56,9 +67,15 @@ const TextSettings = () => {
     actions: { setProp },
     fontSize,
     padding,
+    margin,
+    color,
+    bgColor,
   } = useNode((node) => ({
     fontSize: node.data.props.fontSize,
     padding: node.data.props.padding,
+    margin: node.data.props.margin,
+    color: node.data.props.color,
+    bgColor: node.data.props.bgColor,
   }));
 
   return (
@@ -81,7 +98,7 @@ const TextSettings = () => {
           />
         </FormControl>
       </Typography>
-      <Typography component="div" variant="body1" mt={2}>
+      <Typography component="div" variant="body1" mt={1}>
         <FormControl size="small" component="fieldset" fullWidth>
           <FormLabel component="legend">Padding</FormLabel>
           <Slider
@@ -96,6 +113,43 @@ const TextSettings = () => {
           />
         </FormControl>
       </Typography>
+      <Typography component="div" variant="body1" mt={1}>
+        <FormControl size="small" component="fieldset" fullWidth>
+          <FormLabel component="legend">Margin</FormLabel>
+          <Slider
+            value={margin || 5}
+            step={1}
+            min={1}
+            max={20}
+            valueLabelDisplay="auto"
+            onChange={(_, value) => {
+              setProp((props) => (props.margin = value));
+            }}
+          />
+        </FormControl>
+      </Typography>
+      <Typography component="div" variant="body1" mt={1}>
+        <FormControl fullWidth component="fieldset">
+          <FormLabel component="legend">Text Color</FormLabel>
+          <MuiColorInput
+            value={color || "#000"}
+            onChange={(color) => {
+              setProp((props) => (props.color = color));
+            }}
+          />
+        </FormControl>
+      </Typography>
+      <Typography component="div" variant="body1" mt={1}>
+        <FormControl fullWidth component="fieldset">
+          <FormLabel component="legend">Background Color</FormLabel>
+          <MuiColorInput
+            value={bgColor || "#fff"}
+            onChange={(color) => {
+              setProp((props) => (props.bgColor = color));
+            }}
+          />
+        </FormControl>
+      </Typography>
     </>
   );
 };
@@ -105,6 +159,9 @@ Text.craft = {
     text: "Hi",
     fontSize: 20,
     padding: 10,
+    margin: 5,
+    color: "#000000",
+    bgColor: "#ffffff",
   },
   related: {
     settings: TextSettings,
