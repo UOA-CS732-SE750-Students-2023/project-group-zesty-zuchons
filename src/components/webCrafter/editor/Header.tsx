@@ -50,7 +50,7 @@ export const Header = () => {
           size="small"
           startIcon={<LogoutIcon />}
           onClick={logout}
-          style={{ position: "absolute", right: "0" }}
+          style={{ position: "absolute", right: "5px" }}
         >
           Logout
         </TopbarButton>
