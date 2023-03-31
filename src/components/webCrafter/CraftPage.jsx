@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Grid, Paper, Box, Typography} from "@mui/material";
+import { Grid, Paper, Box, Typography } from "@mui/material";
 
 import { Toolbox } from "./editor/Toolbox";
 import { SettingsPanel } from "./editor/SettingsPanel";
 import { Header } from "./editor/Header";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 import {
   MaterialButton,
@@ -34,7 +34,13 @@ export default function CraftPage() {
 
   // TODO: merge topbar component with the main canvas component
   return (
-    <div className="craft-page" style={craftPageStyles.container}>
+    <div
+      className="craft-page"
+      style={{
+        overflow: "hidden",
+        ...craftPageStyles.container,
+      }}
+    >
       <Editor
         resolver={{
           Card,
@@ -45,6 +51,7 @@ export default function CraftPage() {
           CardBottom,
           MaterialTextField,
         }}
+        style={{ height: "100%" }}
       >
         <Header />
 
@@ -54,7 +61,7 @@ export default function CraftPage() {
               <Toolbox />
             </Paper>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={8} style={{ height: "100%", overflow: "auto" }}>
             <Frame style={craftPageStyles.container}>
               <Element is={Container} padding={30} canvas>
                 <Card />
@@ -76,12 +83,21 @@ export default function CraftPage() {
                 style={{ borderBottom: "1px solid #e0e0e0" }}
               >
                 <Grid item xs>
+                  <SettingsIcon
+                    style={{
+                      position: "absolute",
+                      color: "#ffffff",
+                      paddingLeft: "5px",
+                      paddingTop: "2px",
+                      fontSize: "21px",
+                    }}
+                  />
                   <Typography
                     variant="subtitle1"
                     style={{
                       backgroundColor: "#1976d2",
                       color: "#ffffff",
-                      paddingLeft: "8px",
+                      paddingLeft: "28px",
                       fontSize: "15px",
                     }}
                   >

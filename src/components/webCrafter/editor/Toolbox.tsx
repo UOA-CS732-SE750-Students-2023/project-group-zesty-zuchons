@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, Grid, Button } from "@mui/material";
 
 import { Element, useEditor } from "@craftjs/core";
+import AppsIcon from "@mui/icons-material/Apps";
 
 import {
   Card,
@@ -30,12 +31,21 @@ export const Toolbox = () => {
     <Box>
       <Grid container alignItems="center">
         <Grid item xs>
+          <AppsIcon
+            style={{
+              position: "absolute",
+              color: "#ffffff",
+              paddingLeft: "2px",
+              paddingTop: "2px",
+              fontSize: "21px"
+            }}
+          />
           <Typography
             variant="subtitle1"
             style={{
               backgroundColor: "#1976d2",
               color: "#ffffff",
-              paddingLeft: "8px",
+              paddingLeft: "28px",
               ...toolboxStyle.headerTitle,
             }}
           >
