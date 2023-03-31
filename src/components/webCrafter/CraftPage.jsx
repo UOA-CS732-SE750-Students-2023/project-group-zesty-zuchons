@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Grid, Paper, Box } from "@mui/material";
+import { Grid, Paper, Box, Typography} from "@mui/material";
 
 import { Toolbox } from "./editor/Toolbox";
 import { SettingsPanel } from "./editor/SettingsPanel";
-import { Topbar } from "./editor/Topbar";
+import { Header } from "./editor/Header";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
 
 import {
   MaterialButton,
@@ -21,7 +22,7 @@ import { Editor, Frame, Element } from "@craftjs/core";
 export default function CraftPage() {
   const craftPageStyles = {
     gridContainer: {
-      height: "calc(100% - 50px)",
+      height: "100%",
     },
     container: {
       height: "100%",
@@ -30,6 +31,7 @@ export default function CraftPage() {
       height: "20px",
     },
   };
+
   // TODO: merge topbar component with the main canvas component
   return (
     <div className="craft-page" style={craftPageStyles.container}>
@@ -44,23 +46,8 @@ export default function CraftPage() {
           MaterialTextField,
         }}
       >
-        <Box
-          className="header"
-          sx={{ borderBottom: 1, borderColor: "grey.300" }}
-        >
-          <Grid container alignItems="left">
-            <img
-              src="../../../assets/logo.svg"
-              style={{ height: "30px", width: "30px" }}
-            ></img>
-            <img
-              src="../../../assets/title.svg"
-              style={{ position: "absolute", left: "5px", top: "-22px" }}
-            ></img>
-          </Grid>
-        </Box>
+        <Header />
 
-        <Topbar />
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
           <Grid item xs={2} sx={{ borderRight: 1, borderColor: "grey.300" }}>
             <Paper style={craftPageStyles.container}>
@@ -83,6 +70,25 @@ export default function CraftPage() {
           </Grid>
           <Grid item xs={2} sx={{ borderLeft: 1, borderColor: "grey.300" }}>
             <Paper style={craftPageStyles.container}>
+              <Grid
+                container
+                alignItems="center"
+                style={{ borderBottom: "1px solid #e0e0e0" }}
+              >
+                <Grid item xs>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      backgroundColor: "#1976d2",
+                      color: "#ffffff",
+                      paddingLeft: "8px",
+                      fontSize: "15px",
+                    }}
+                  >
+                    Setting panel
+                  </Typography>
+                </Grid>
+              </Grid>
               <SettingsPanel
                 className="setting-panel"
                 style={{ height: "inherit" }}

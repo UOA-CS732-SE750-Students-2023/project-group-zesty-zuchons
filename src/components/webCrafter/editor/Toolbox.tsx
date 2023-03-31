@@ -39,7 +39,7 @@ export const Toolbox = () => {
               ...toolboxStyle.headerTitle,
             }}
           >
-            Components
+            Widgets
           </Typography>
         </Grid>
       </Grid>
