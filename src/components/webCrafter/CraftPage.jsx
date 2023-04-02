@@ -15,6 +15,8 @@ import {
   CardBottom,
   Text,
   MaterialTextField,
+  MaterialChip,
+  MaterialSwitch,
 } from "./pageComponents/exportComponents";
 
 import { Editor, Frame, Element } from "@craftjs/core";
@@ -50,6 +52,8 @@ export default function CraftPage() {
           CardTop,
           CardBottom,
           MaterialTextField,
+          MaterialChip,
+          MaterialSwitch,
         }}
         style={{ height: "100%" }}
       >

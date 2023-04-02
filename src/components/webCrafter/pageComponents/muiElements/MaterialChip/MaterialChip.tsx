@@ -7,21 +7,25 @@ import {
   FormLabel,
   Select,
   MenuItem,
-  Divider,
+  Chip,
   FormControlLabel,
 } from "@mui/material";
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
-export const MaterialDivider = ({}) => {
+export const MaterialChip = ({}) => {
   const {
     // declare connector in useNode() to enable drag for the component
     connectors: { connect, drag },
   } = useNode();
-  return <Divider></Divider>;
+  return (
+    <div>
+      <Chip></Chip>
+    </div>
+  );
 };
 
-const MaterialDividerSettings = () => {
+const MaterialChipSettings = () => {
   const {
     actions: { setProp },
     props,
@@ -31,12 +35,12 @@ const MaterialDividerSettings = () => {
   return <div></div>;
 };
 
-MaterialDivider.craft = {
+MaterialChip.craft = {
   // 完善可配置prop后需要更新此处的默认prop
   props: {
     //todo
   },
   related: {
-    settings: MaterialDividerSettings,
+    settings: MaterialChipSettings,
   },
 };
