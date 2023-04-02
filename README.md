@@ -13,15 +13,13 @@
 
 ## Features
 
-TODO....
+Web Crafter is a low-code website building platform aimed to help people who don't know website programing to buildup their own website by drag and drop.
+- Login with Google authentication (TODO)
+- Provide basic widgets for user to buildup the website
+- Provide flexible drag-and-drop feature for people to add and modify the widget for their webpage in canvas
+- Styles and properfies of widget can be modified easily from setting panel
+- support event for some of the widget (e.g: support onclick event on button)
 
-### Frontend
-
-This is a [Vite](https://vitejs.dev) project. Mainly use react.
-
-### Backend
-
-The backend of the application is written with Express with MongoDB
 
 ## Running Project
 
@@ -44,6 +42,10 @@ npm run build
 ```bash
 npm run start
 ```
+
+TODO: frontend and backend setup will be handled properly by `npm run start` command when the project is finished.
+
+Plan to merge every project setting up command into a single command.
 
 ---
 
