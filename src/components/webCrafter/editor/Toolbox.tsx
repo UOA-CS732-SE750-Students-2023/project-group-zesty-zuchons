@@ -10,6 +10,8 @@ import {
   Container,
   Text,
   MaterialTextField,
+  MaterialChip,
+  MaterialSwitch
 } from "../pageComponents/exportComponents";
 
 export const Toolbox = () => {
@@ -124,6 +126,34 @@ export const Toolbox = () => {
             }
           >
             TextField
+          </Button>
+        </Grid>
+        <Grid container direction="column" item>
+          <Button
+            variant="contained"
+            ref={(ref) =>
+              connectors.create(
+                ref,
+                <MaterialChip
+                />
+              )
+            }
+          >
+            Chip
+          </Button>
+        </Grid>
+        <Grid container direction="column" item>
+          <Button
+            variant="contained"
+            ref={(ref) =>
+              connectors.create(
+                ref,
+                <MaterialSwitch
+                />
+              )
+            }
+          >
+            Switch
           </Button>
         </Grid>
       </Grid>
