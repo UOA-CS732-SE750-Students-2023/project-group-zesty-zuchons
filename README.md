@@ -55,6 +55,15 @@ to run in dev mode:
 npm run dev
 ```
 
+to run the back-end server:
+
+```bash
+node server.js
+```
+Database server link:
+
+mongodb+srv://zzq961213:Aa12345678@cluster0.5ewkh2k.mongodb.net/database
+
 ## Tests
 
 Run `npm test` in the project root to execute the unit tests via [Jest](https://jestjs.io).
