@@ -20,12 +20,10 @@ Web Crafter is a low-code website building platform aimed to help people who don
 - Styles and properfies of widget can be modified easily from setting panel
 - support event for some of the widget (e.g: support onclick event on button)
 
----
 
 ## Tech stacks
 TODO
 
----
 
 ## Running Project
 
@@ -52,8 +50,6 @@ npm run start
 TODO: frontend and backend setup will be handled properly by `npm run start` command when the project is finished.
 
 Plan to merge every project setting up command into a single command.
-
----
 
 to run in dev mode:
 
