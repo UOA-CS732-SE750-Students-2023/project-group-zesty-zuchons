@@ -1,4 +1,4 @@
-# WebCrafter
+# Web Crafter
 
 <p align="center">
   <img src="./assets/logo.svg" width="350" />
