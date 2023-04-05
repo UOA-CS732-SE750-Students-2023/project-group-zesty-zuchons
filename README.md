@@ -20,6 +20,12 @@ Web Crafter is a low-code website building platform aimed to help people who don
 - Styles and properfies of widget can be modified easily from setting panel
 - support event for some of the widget (e.g: support onclick event on button)
 
+---
+
+## Tech stacks
+TODO
+
+---
 
 ## Running Project
 
