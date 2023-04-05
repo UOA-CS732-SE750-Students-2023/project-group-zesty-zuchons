@@ -130,7 +130,7 @@ const MaterialbuttonSetting = () => {
               </Select>
             </FormControl>
           </Typography>
-          <Typography component="div" variant="body1" mt={2}>
+          <Typography component="div" variant="body1" mt={1}>
             <FormControl size="small" component="fieldset" fullWidth>
               <FormLabel component="legend">Variant</FormLabel>
               <Select
@@ -147,7 +147,7 @@ const MaterialbuttonSetting = () => {
               </Select>
             </FormControl>
           </Typography>
-          <Typography component="div" variant="body1" mt={2}>
+          <Typography component="div" variant="body1" mt={1}>
             <FormControl component="fieldset" size="small" fullWidth>
               <FormLabel component="legend">Color</FormLabel>
               <Select
@@ -186,7 +186,7 @@ const MaterialbuttonSetting = () => {
               />
             </FormControl>
           </Typography>
-          <Typography component="div" variant="body1" mt={2}>
+          <Typography component="div" variant="body1" mt={1}>
             <FormControl size="small" component="fieldset" fullWidth>
               <FormLabel component="legend">Margin</FormLabel>
               <Slider
@@ -202,15 +202,28 @@ const MaterialbuttonSetting = () => {
               />
             </FormControl>
           </Typography>
+          <Typography component="div" variant="body1" mt={1}>
+            <FormControl size="small" component="fieldset" fullWidth>
+              <FormLabel component="legend">Content</FormLabel>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                value={props.text}
+                onChange={(e) => {
+                  setProp((props) => (props.text = e.target.value));
+                }}
+                style={componentDefaultStyle.settingPanelTextArea}
+              ></TextField>
+            </FormControl>
+          </Typography>
         </div>
       ) : (
         <div>
-          <Typography component="div" variant="body1" mt={2}>
+          <Typography component="div" variant="body1" mt={1}>
             <FormControl component="fieldset" size="small" fullWidth>
               <FormLabel component="legend">Click Event</FormLabel>
               <TextField
                 id="outlined-basic"
-                label="Outlined"
                 variant="outlined"
                 multiline
                 value={props.currentFunction}
