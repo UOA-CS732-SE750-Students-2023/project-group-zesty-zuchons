@@ -81,8 +81,8 @@ TODO...
 
 ## Contributors
 
-- Zixuan Wen (zwen655, director, frontend / backend engineer)
-- Mianmian Zheng (mzhe930, frontend engineer)
-- Ziqi Zhong (zzho500, backend engineer)
-- Yue Wang (wany359, frontend engineer)
-- Qiufan Qian (qqia320, frontend engineer)
+- Zixuan Wen (zwen655)
+- Mianmian Zheng (mzhe930)
+- Ziqi Zhong (zzho500)
+- Yue Wang (wany359)
+- Qiufan Qian (qqia320)
