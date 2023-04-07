@@ -1,7 +1,12 @@
 import React from "react";
+import store from "../../../store/store";
+import {
+  setEditableTrue,
+  setEditableFalse,
+} from "../../../store/action/editable";
 import { useEditor } from "@craftjs/core";
 
-import { Box, Grid, Button } from "@mui/material";
+import { Box, Grid, Button, FormControlLabel, Switch } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -17,8 +22,20 @@ export const Header = () => {
     //TODO: save the serialized json of current canvas to backend
     console.log(query.serialize());
   }
+
   function logout() {
     navigate("/");
+  }
+
+  function toggleEditable(value, actions) {
+    actions.setOptions((options) => (options.enabled = value));
+    if (value == true) {
+      store.dispatch(setEditableTrue);
+    } else if (value == false) {
+      store.dispatch(setEditableFalse);
+    } else {
+      store.dispatch(setEditableTrue);
+    }
   }
 
   const TopbarButton = styled(Button)({
@@ -38,6 +55,18 @@ export const Header = () => {
           src="../../../../assets/title.svg"
           style={{ position: "absolute", left: "5px", top: "-22px" }}
         ></img>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={enabled}
+              onChange={(_, value) => {
+                toggleEditable(value, actions);
+              }}
+            />
+          }
+          label="Enable"
+          style={{ position: "absolute", right: "150px" }}
+        />
         <TopbarButton
           size="small"
           startIcon={<SaveAltIcon />}
