@@ -1,4 +1,5 @@
 import React from "react";
+import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from "react-router-dom";
 import { Box, Grid, Button, FormControlLabel } from "@mui/material";
 export const Homepage = () => {
@@ -11,7 +12,7 @@ export const Homepage = () => {
     console.log("loginProcess");
     jumpToCraftPage();
   }
-
+  
   //TODO: need to modify to call a login api and then jump to craft page
   return (
     <div className="homepage" style={{ height: "100%", width: "100%" }}>
@@ -50,7 +51,8 @@ export const Homepage = () => {
         <div></div>
       </Grid>
       <Grid style={{ height: "90%" }}>
-        <Button onClick={loginProcess}>jump to craftpage</Button>
+        
+        <div style={{width:"20%"}}><GoogleLogin onSuccess={loginProcess} /></div>
         <div className="introduction">
           
         </div>
