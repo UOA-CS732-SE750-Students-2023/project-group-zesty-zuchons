@@ -62,7 +62,7 @@ export default function CraftPage() {
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
           <Grid
             item
-            xs={2}
+            xs={1}
             sx={{
               borderRight: 1,
               borderColor: "grey.300",
@@ -74,7 +74,7 @@ export default function CraftPage() {
               <Toolbox />
             </Paper>
           </Grid>
-          <Grid item xs={8} style={{ height: "100%", overflow: "auto" }}>
+          <Grid item xs={9} style={{ height: "100%", overflow: "auto" }}>
             <Frame style={craftPageStyles.container}>
               <Element is={Container} padding={30} canvas>
                 <Card />
