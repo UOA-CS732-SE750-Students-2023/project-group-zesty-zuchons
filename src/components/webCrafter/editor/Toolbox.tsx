@@ -3,12 +3,11 @@ import {
   Box,
   Typography,
   Grid,
-  Button,
   IconButton,
   Tooltip,
   TooltipProps,
   tooltipClasses,
-  Divider
+  Chip
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -101,6 +100,7 @@ export const Toolbox = () => {
         columnSpacing={0}
         p={1}
       >
+        <Chip label="MUI" />
         <Grid container direction="column" item>
           <WidgetTooltip title="MaterialButton" placement="right">
             <DragIconButton
@@ -154,7 +154,7 @@ export const Toolbox = () => {
           </WidgetTooltip>
         </Grid>
 
-        <Grid container direction="column" item style={{borderBottom: "1px solid #bdbdbd"}}>
+        <Grid container direction="column" item style={{borderBottom: "1px solid #bdbdbd", marginBottom: "20px"}}>
           <WidgetTooltip title="MaterialSwitch" placement="right">
             <DragIconButton
               aria-label="switch"
@@ -165,6 +165,7 @@ export const Toolbox = () => {
           </WidgetTooltip>
         </Grid>
 
+        <Chip label="HTML" />
         <Grid container direction="column" item>
           <WidgetTooltip title="HTMLText" placement="right">
             <DragIconButton
