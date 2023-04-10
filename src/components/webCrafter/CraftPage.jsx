@@ -62,7 +62,7 @@ export default function CraftPage() {
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
           <Grid
             item
-            xs={1}
+            xs={0.8}
             sx={{
               borderRight: 1,
               borderColor: "grey.300",
@@ -90,7 +90,7 @@ export default function CraftPage() {
           </Grid>
           <Grid
             item
-            xs={2}
+            xs={2.2}
             sx={{
               borderLeft: 1,
               borderColor: "grey.300",

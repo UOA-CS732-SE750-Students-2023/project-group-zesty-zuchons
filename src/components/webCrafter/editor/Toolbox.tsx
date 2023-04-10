@@ -6,6 +6,9 @@ import {
   Button,
   IconButton,
   Tooltip,
+  TooltipProps,
+  tooltipClasses,
+  Divider
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -17,8 +20,8 @@ import ShortTextIcon from "@mui/icons-material/ShortText";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import StyleIcon from "@mui/icons-material/Style";
-import LabelIcon from '@mui/icons-material/Label';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
+import LabelIcon from "@mui/icons-material/Label";
+import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 
 import {
   Card,
@@ -46,11 +49,23 @@ export const Toolbox = () => {
   };
 
   const DragIconButton = styled(IconButton)({
+    color: "#bdbdbd",
     "&:hover": {
       backgroundColor: "rgb(0 0 0 / 0%)",
       cursor: "move",
+      color: "#424242",
     },
   });
+
+  const WidgetTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} arrow />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      minheight: 70,
+      fontSize: theme.typography.pxToRem(14),
+      border: "1px solid #dadde9",
+    },
+  }));
 
   return (
     <Box>
@@ -87,7 +102,7 @@ export const Toolbox = () => {
         p={1}
       >
         <Grid container direction="column" item>
-          <Tooltip title="MaterialButton" placement="right">
+          <WidgetTooltip title="MaterialButton" placement="right">
             <DragIconButton
               aria-label="button"
               ref={(ref) =>
@@ -105,46 +120,11 @@ export const Toolbox = () => {
             >
               <RadioButtonCheckedIcon />
             </DragIconButton>
-          </Tooltip>
+          </WidgetTooltip>
         </Grid>
 
         <Grid container direction="column" item>
-          <Tooltip title="text" placement="right">
-            <DragIconButton
-              aria-label="text"
-              ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
-            >
-              <ShortTextIcon />
-            </DragIconButton>
-          </Tooltip>
-        </Grid>
-
-        <Grid container direction="column" item>
-          <Tooltip title="Container" placement="right">
-            <DragIconButton
-              aria-label="Container"
-              ref={(ref) =>
-                connectors.create(ref, <Element is={Container} canvas />)
-              }
-            >
-              <ListAltIcon />
-            </DragIconButton>
-          </Tooltip>
-        </Grid>
-
-        <Grid container direction="column" item>
-          <Tooltip title="Card" placement="right">
-            <DragIconButton
-              aria-label="card"
-              ref={(ref) => connectors.create(ref, <Card />)}
-            >
-              <StyleIcon />
-            </DragIconButton>
-          </Tooltip>
-        </Grid>
-
-        <Grid container direction="column" item>
-          <Tooltip title="TextField" placement="right">
+          <WidgetTooltip title="MaterialTextField" placement="right">
             <DragIconButton
               aria-label="textfield"
               ref={(ref) =>
@@ -160,31 +140,65 @@ export const Toolbox = () => {
             >
               <TextFieldsIcon />
             </DragIconButton>
-          </Tooltip>
+          </WidgetTooltip>
         </Grid>
 
         <Grid container direction="column" item>
-          <Tooltip title="Chip" placement="right">
+          <WidgetTooltip title="MaterialChip" placement="right">
             <DragIconButton
               aria-label="chip"
               ref={(ref) => connectors.create(ref, <MaterialChip />)}
             >
               <LabelIcon />
             </DragIconButton>
-          </Tooltip>
+          </WidgetTooltip>
         </Grid>
 
-        <Grid container direction="column" item>
-          <Tooltip title="Switch" placement="right">
+        <Grid container direction="column" item style={{borderBottom: "1px solid #bdbdbd"}}>
+          <WidgetTooltip title="MaterialSwitch" placement="right">
             <DragIconButton
               aria-label="switch"
               ref={(ref) => connectors.create(ref, <MaterialSwitch />)}
             >
               <ToggleOffIcon />
             </DragIconButton>
-          </Tooltip>
+          </WidgetTooltip>
         </Grid>
 
+        <Grid container direction="column" item>
+          <WidgetTooltip title="HTMLText" placement="right">
+            <DragIconButton
+              aria-label="text"
+              ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
+            >
+              <ShortTextIcon />
+            </DragIconButton>
+          </WidgetTooltip>
+        </Grid>
+
+        <Grid container direction="column" item>
+          <WidgetTooltip title="Container" placement="right">
+            <DragIconButton
+              aria-label="Container"
+              ref={(ref) =>
+                connectors.create(ref, <Element is={Container} canvas />)
+              }
+            >
+              <ListAltIcon />
+            </DragIconButton>
+          </WidgetTooltip>
+        </Grid>
+
+        <Grid container direction="column" item>
+          <WidgetTooltip title="Card" placement="right">
+            <DragIconButton
+              aria-label="card"
+              ref={(ref) => connectors.create(ref, <Card />)}
+            >
+              <StyleIcon />
+            </DragIconButton>
+          </WidgetTooltip>
+        </Grid>
       </Grid>
     </Box>
   );
