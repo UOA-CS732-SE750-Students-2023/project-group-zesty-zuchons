@@ -21,6 +21,8 @@ import {
 
 import { Editor, Frame, Element } from "@craftjs/core";
 
+import store from "../../store/store";
+
 export default function CraftPage() {
   const craftPageStyles = {
     gridContainer: {
@@ -74,16 +76,16 @@ export default function CraftPage() {
               <Toolbox />
             </Paper>
           </Grid>
-          <Grid item xs={9} style={{ height: "100%", overflow: "auto" }}>
+          <Grid item xs={9} style={{ height: "100%", overflow: "auto", backgroundColor: "#eeeeee" }}>
             <Frame style={craftPageStyles.container}>
               <Element is={Container} padding={30} canvas>
                 <Card />
                 <MaterialButton size="small" variant="outlined">
                   Click
                 </MaterialButton>
-                <Text size="small" text="Hi world!" />
+                <Text size="small" text="Hi world!" align="inherit" />
                 <Element is={Container} padding={5} canvas>
-                  <Text size="small" text="It's me again!" />
+                  <Text size="small" text="It's me again!" align="inherit" />
                 </Element>
               </Element>
             </Frame>
