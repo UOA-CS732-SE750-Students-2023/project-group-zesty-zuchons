@@ -46,8 +46,8 @@ export const Card = ({ background, padding = 20 }) => {
     <Container background={background} padding={padding}>
       <Element is={CardTop} id="text" canvas>
         {" "}
-        <Text text="Title" fontSize={20} />
-        <Text text="Subtitle" fontSize={15} />
+        <Text text="Title" fontSize={20} align="inherit"/>
+        <Text text="Subtitle" fontSize={15} align="inherit"/>
       </Element>
       <Element is={CardBottom} id="buttons" canvas>
         {" "}

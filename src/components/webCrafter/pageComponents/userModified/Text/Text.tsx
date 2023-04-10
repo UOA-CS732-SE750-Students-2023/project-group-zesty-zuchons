@@ -10,11 +10,21 @@ import {
   Typography,
   Divider,
   Chip,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { MuiColorInput } from "mui-color-input";
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
-export const Text = ({ text, fontSize, padding, color, bgColor, margin }) => {
+export const Text = ({
+  text,
+  fontSize,
+  padding,
+  color,
+  bgColor,
+  margin,
+  align,
+}) => {
   const {
     connectors: { connect, drag },
     isActive,
@@ -53,7 +63,7 @@ export const Text = ({ text, fontSize, padding, color, bgColor, margin }) => {
           margin: `${margin}px`,
           color: `${color}`,
           background: `${bgColor}`,
-
+          textAlign: `${align}`,
           ...(hover ? componentDefaultStyle.componentHover : null),
           ...(editable ? componentDefaultStyle.componentFocus : null),
         }}
@@ -70,12 +80,14 @@ const TextSettings = () => {
     margin,
     color,
     bgColor,
+    props,
   } = useNode((node) => ({
     fontSize: node.data.props.fontSize,
     padding: node.data.props.padding,
     margin: node.data.props.margin,
     color: node.data.props.color,
     bgColor: node.data.props.bgColor,
+    props: node.data.props,
   }));
 
   return (
@@ -150,6 +162,21 @@ const TextSettings = () => {
           />
         </FormControl>
       </Typography>
+      <Typography component="div" variant="body1" mt={1}>
+        <FormControl component="fieldset" size="small" fullWidth>
+          <FormLabel component="legend">Text Align</FormLabel>
+          <Select
+            id="align-select"
+            value={props.align}
+            onChange={(e) => setProp((props) => (props.align = e.target.value))}
+            style={componentDefaultStyle.settingPanelSelect}
+          >
+            <MenuItem value="center">Center</MenuItem>
+            <MenuItem value="end">End</MenuItem>
+            <MenuItem value="inherit">Inherit</MenuItem>
+          </Select>
+        </FormControl>
+      </Typography>
     </>
   );
 };
@@ -162,6 +189,7 @@ Text.craft = {
     margin: 5,
     color: "#000000",
     bgColor: "#ffffff",
+    align: "inherit",
   },
   related: {
     settings: TextSettings,
