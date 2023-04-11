@@ -12,10 +12,11 @@ import {
   Typography,
   Slider,
   Divider,
-  Chip
+  Chip,
 } from "@mui/material";
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
+import store from "../../../../../store/store";
 
 export const MaterialButton = ({
   size,
@@ -35,6 +36,7 @@ export const MaterialButton = ({
   }));
 
   const [hover, setHover] = useState(false);
+  let canvasEditable = store.getState();
 
   return (
     <Button
@@ -55,8 +57,12 @@ export const MaterialButton = ({
       style={{
         padding: `${padding}px`,
         margin: `${margin}px`,
-        ...(hover ? componentDefaultStyle.componentHover : null),
-        ...(isActive ? componentDefaultStyle.componentFocus : null),
+        ...(hover && canvasEditable
+          ? componentDefaultStyle.componentHover
+          : null),
+        ...(isActive && canvasEditable
+          ? componentDefaultStyle.componentFocus
+          : null),
       }}
     >
       {text}
@@ -110,8 +116,17 @@ const MaterialbuttonSetting = () => {
 
       {selectedBtn == 1 ? (
         <div>
-          <Divider textAlign="left" style={{paddingTop: "20px"}} color="#e0e0e0">
-            <Chip size="small" variant="outlined" color="primary" label="props" />
+          <Divider
+            textAlign="left"
+            style={{ paddingTop: "20px" }}
+            color="#e0e0e0"
+          >
+            <Chip
+              size="small"
+              variant="outlined"
+              color="primary"
+              label="props"
+            />
           </Divider>
           <Typography component="div" variant="body1" mt={1}>
             <FormControl size="small" component="fieldset" fullWidth>
@@ -166,8 +181,17 @@ const MaterialbuttonSetting = () => {
             </FormControl>
           </Typography>
 
-          <Divider textAlign="left" style={{paddingTop: "20px"}} color="#e0e0e0">
-            <Chip size="small" variant="outlined" color="primary" label="styles" />
+          <Divider
+            textAlign="left"
+            style={{ paddingTop: "20px" }}
+            color="#e0e0e0"
+          >
+            <Chip
+              size="small"
+              variant="outlined"
+              color="primary"
+              label="styles"
+            />
           </Divider>
 
           <Typography component="div" variant="body1" mt={1}>

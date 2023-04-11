@@ -26,7 +26,7 @@ export const Header = () => {
   function logout() {
     navigate("/");
   }
-
+  // update editable state in redux for control usage
   function toggleEditable(value, actions) {
     actions.setOptions((options) => (options.enabled = value));
     if (value == true) {
@@ -36,9 +36,6 @@ export const Header = () => {
     }
   }
 
-  store.subscribe(() => {
-    console.log("state changed:", store.getState());
-  });
 
   const TopbarButton = styled(Button)({
     "&:hover": {

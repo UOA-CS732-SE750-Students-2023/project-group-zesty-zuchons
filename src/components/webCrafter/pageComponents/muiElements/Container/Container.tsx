@@ -15,6 +15,7 @@ import {
 import { MuiColorInput } from "mui-color-input";
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
+import store from "../../../../../store/store";
 
 export const Container = ({ background, padding = 0, children }) => {
   const {
@@ -23,14 +24,14 @@ export const Container = ({ background, padding = 0, children }) => {
   } = useNode((node) => ({
     isActive: node.events.selected,
   }));
-
+  let canvasEditable = store.getState()
   return (
     <Paper
       ref={(ref) => connect(drag(ref))}
       style={{
         background,
         padding: `${padding}px`,
-        ...(isActive ? componentDefaultStyle.componentFocus : null),
+        ...(isActive && canvasEditable? componentDefaultStyle.componentFocus : null),
       }}
     >
       {children}

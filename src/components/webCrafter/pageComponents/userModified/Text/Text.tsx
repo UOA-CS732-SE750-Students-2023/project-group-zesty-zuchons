@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { MuiColorInput } from "mui-color-input";
 import componentDefaultStyle from "../../componentDefaultStyle.js";
+import store from "../../../../../store/store";
 
 export const Text = ({
   text,
@@ -35,13 +36,17 @@ export const Text = ({
 
   const [editable, setEditable] = useState(false);
   const [hover, setHover] = useState(false);
+  let canvasEditable = store.getState();
 
   useEffect(() => {
     !isActive && setEditable(false);
   }, [isActive]);
 
   return (
-    <div ref={(ref) => connect(drag(ref))} onClick={(e) => setEditable(true)}>
+    <div
+      ref={(ref) => connect(drag(ref))}
+      onClick={(e) => (canvasEditable ? setEditable(true) : setEditable(false))}
+    >
       <ContentEditable
         onMouseEnter={() => {
           setHover(true);
@@ -64,8 +69,12 @@ export const Text = ({
           color: `${color}`,
           background: `${bgColor}`,
           textAlign: `${align}`,
-          ...(hover ? componentDefaultStyle.componentHover : null),
-          ...(editable ? componentDefaultStyle.componentFocus : null),
+          ...(hover && canvasEditable
+            ? componentDefaultStyle.componentHover
+            : null),
+          ...(editable && canvasEditable
+            ? componentDefaultStyle.componentFocus
+            : null),
         }}
       />
     </div>
