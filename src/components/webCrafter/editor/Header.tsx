@@ -31,19 +31,20 @@ export const Header = () => {
     actions.setOptions((options) => (options.enabled = value));
     if (value == true) {
       store.dispatch(setEditableTrue);
-    } else if (value == false) {
-      store.dispatch(setEditableFalse);
     } else {
-      store.dispatch(setEditableTrue);
+      store.dispatch(setEditableFalse);
     }
   }
+
+  store.subscribe(() => {
+    console.log("state changed:", store.getState());
+  });
 
   const TopbarButton = styled(Button)({
     "&:hover": {
       backgroundColor: "#bbdefb",
     },
   });
-
 
   return (
     <Box className="header" sx={{ borderBottom: 1, borderColor: "grey.300" }}>
