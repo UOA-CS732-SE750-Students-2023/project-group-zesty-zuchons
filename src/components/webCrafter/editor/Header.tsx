@@ -10,6 +10,7 @@ import { Box, Grid, Button, FormControlLabel, Switch } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
 import { useNavigate } from "react-router-dom";
 
@@ -27,15 +28,17 @@ export const Header = () => {
     navigate("/");
   }
   // update editable state in redux for control usage
-  function toggleEditable(value, actions) {
-    actions.setOptions((options) => (options.enabled = value));
-    if (value == true) {
+  function toggleEditable() {
+    let canvasEditable = store.getState();
+
+    actions.setOptions((options) => (options.enabled = !canvasEditable));
+    if (!canvasEditable == true) {
       store.dispatch(setEditableTrue);
     } else {
       store.dispatch(setEditableFalse);
     }
   }
-
+  let canvasEditable = store.getState();
 
   const TopbarButton = styled(Button)({
     "&:hover": {
@@ -54,18 +57,19 @@ export const Header = () => {
           src="../../../../assets/title.svg"
           style={{ position: "absolute", left: "5px", top: "-22px" }}
         ></img>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={enabled}
-              onChange={(_, value) => {
-                toggleEditable(value, actions);
-              }}
-            />
-          }
-          label="Enable"
-          style={{ position: "absolute", right: "150px" }}
-        />
+
+        <TopbarButton
+          size="small"
+          startIcon={<PlayCircleOutlineIcon />}
+          onClick={toggleEditable}
+          style={{
+            position: "absolute",
+            right: "180px",
+            backgroundColor: canvasEditable ? null : "#bbdefb",
+          }}
+        >
+          Preview
+        </TopbarButton>
         <TopbarButton
           size="small"
           startIcon={<SaveAltIcon />}
