@@ -1,7 +1,15 @@
 import React from "react";
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import { Box, Grid, Button, FormControlLabel } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Button,
+  FormControlLabel,
+  Breadcrumbs,
+  Link,
+  Typography,
+} from "@mui/material";
 export const Homepage = () => {
   const navigate = useNavigate();
 
@@ -12,7 +20,7 @@ export const Homepage = () => {
     console.log("loginProcess");
     jumpToCraftPage();
   }
-  
+
   //TODO: need to modify to call a login api and then jump to craft page
   return (
     <div className="homepage" style={{ height: "100%", width: "100%" }}>
@@ -48,19 +56,49 @@ export const Homepage = () => {
             height: "90px",
           }}
         ></img>
-        <div></div>
+        <div
+          className="header-breadcrumb"
+          style={{ position: "absolute", right: "100px", top: "30px" }}
+        >
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link
+              underline="hover"
+              color="inherit"
+              href="https://github.com/UOA-CS732-SE750-Students-2023/project-group-zesty-zuchons"
+              target="_blank"
+              rel="noopener"
+            >
+              Github
+            </Link>
+            <Link
+              underline="hover"
+              color="inherit"
+              href="https://craft.js.org/"
+              target="_blank"
+              rel="noopener"
+            >
+              Resources
+            </Link>
+            <Typography color="text.primary">Breadcrumbs</Typography>
+          </Breadcrumbs>
+        </div>
       </Grid>
       <Grid style={{ height: "90%" }}>
-        
-        <div style={{width:"20%"}}><GoogleLogin onSuccess={loginProcess} /></div>
-        <div className="introduction">
-          
+        <div style={{ width: "20%" }}>
+          <GoogleLogin onSuccess={loginProcess} />
         </div>
+        <div className="introduction"></div>
         <a href="https://www.freepik.com/free-vector/low-code-development-concept-illustration_19184596.htm#page=3&query=low%20code&position=6&from_view=keyword&track=ais">
           <img
             src="../../../assets/home.jpg"
             alt="Image by storyset on Freepik"
-            style={{height: "700px", width:"700px", position:"absolute", right:"100px", top:"100px"}}
+            style={{
+              height: "700px",
+              width: "700px",
+              position: "absolute",
+              right: "100px",
+              top: "100px",
+            }}
           ></img>
         </a>
       </Grid>
