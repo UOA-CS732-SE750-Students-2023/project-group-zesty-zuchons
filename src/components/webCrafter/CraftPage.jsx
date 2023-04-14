@@ -78,7 +78,7 @@ export default function CraftPage() {
           </Grid>
           <Grid item xs={9} style={{ height: "100%", overflow: "auto", backgroundColor: "#eeeeee" }}>
             <Frame style={craftPageStyles.container}>
-              <Element is={Container} padding={30} canvas>
+              <Element is={Container} padding={20} margin={30} canvas>
                 <Card />
                 <MaterialButton size="small" variant="outlined">
                   Click

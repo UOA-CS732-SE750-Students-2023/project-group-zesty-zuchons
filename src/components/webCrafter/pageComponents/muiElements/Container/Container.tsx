@@ -17,7 +17,7 @@ import { MuiColorInput } from "mui-color-input";
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 import store from "../../../../../store/store";
 
-export const Container = ({ background, padding = 0, children }) => {
+export const Container = ({ background, padding = 0, margin = 0, children }) => {
   const {
     connectors: { connect, drag },
     isActive,
@@ -31,6 +31,7 @@ export const Container = ({ background, padding = 0, children }) => {
       style={{
         background,
         padding: `${padding}px`,
+        margin: `${margin}px`,
         ...(isActive && canvasEditable? componentDefaultStyle.componentFocus : null),
       }}
     >
@@ -43,10 +44,12 @@ export const ContainerSettings = () => {
   const {
     background,
     padding,
+    margin,
     actions: { setProp },
   } = useNode((node) => ({
     background: node.data.props.background,
     padding: node.data.props.padding,
+    margin: node.data.props.margin
   }));
   return (
     <div>
@@ -77,6 +80,19 @@ export const ContainerSettings = () => {
           />
         </FormControl>
       </Typography>
+      <Typography component="div" variant="body1" mt={2}>
+        <FormControl fullWidth component="fieldset">
+          <FormLabel component="legend">Margin</FormLabel>
+          <Slider
+            defaultValue={margin || 10}
+            valueLabelDisplay="auto"
+            step={1}
+            min={1}
+            max={50}
+            onChange={(_, value) => setProp((props) => (props.margin = value))}
+          />
+        </FormControl>
+      </Typography>
     </div>
   );
 };
@@ -85,6 +101,7 @@ Container.craft = {
   props: {
     background: "#ffffff",
     padding: 10,
+    margin: 10
   },
   related: {
     settings: ContainerSettings,
