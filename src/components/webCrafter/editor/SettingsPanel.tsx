@@ -47,7 +47,6 @@ export const SettingsPanel = () => {
       <Grid container direction="column" spacing={0}>
         <Grid item>
           <Box>
-            
             <Grid
               container
               alignItems="center"
@@ -93,18 +92,22 @@ export const SettingsPanel = () => {
         >
           {selected.settings && React.createElement(selected.settings)}
           {selected.isDeletable ? (
-            <div style={{ paddingTop: "20px" }}>
-              <Button
-                variant="contained"
-                size="large"
-                color="error"
-                onClick={() => {
-                  actions.delete(selected.id);
-                }}
-              >
-                Delete
-              </Button>
-            </div>
+            <Grid container direction="column" style={{ paddingTop: "20px" }}>
+              <Box>
+                <Grid item xs p={1}>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    color="error"
+                    onClick={() => {
+                      actions.delete(selected.id);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </Grid>
+              </Box>
+            </Grid>
           ) : null}
         </FormControl>
       </Grid>

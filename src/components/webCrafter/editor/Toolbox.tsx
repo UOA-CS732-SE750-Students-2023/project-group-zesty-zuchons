@@ -72,7 +72,8 @@ export const Toolbox = () => {
         <Grid item xs>
           <AppsIcon
             style={{
-              position: "absolute",
+              position: "relative",
+                      float:"left",
               color: "#ffffff",
               paddingLeft: "2px",
               paddingTop: "2px",

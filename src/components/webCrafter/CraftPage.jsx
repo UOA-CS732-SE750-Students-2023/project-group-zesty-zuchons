@@ -109,7 +109,8 @@ export default function CraftPage() {
                 <Grid item xs>
                   <SettingsIcon
                     style={{
-                      position: "absolute",
+                      position: "relative",
+                      float:"left",
                       color: "#ffffff",
                       paddingLeft: "5px",
                       paddingTop: "2px",
