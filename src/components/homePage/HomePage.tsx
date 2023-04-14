@@ -10,13 +10,28 @@ import {
   Link,
   Typography,
 } from "@mui/material";
+import jwt from 'jwt-decode';
+import axios from 'axios';
+
+//define the jwt decode object
+interface googleUser {
+  email: string;
+  family_name: string;
+  given_name: string;
+}
+
 export const Homepage = () => {
   const navigate = useNavigate();
 
   function jumpToCraftPage() {
     navigate("/craftpage");
   }
-  function loginProcess() {
+   async function loginProcess(credential) {
+    const user = jwt<googleUser>(credential);
+    console.log(user.email);
+    //call api to create user when first login
+    const response = await axios.post('http://localhost:3001/createUserInfo', {userEmail: user.email,familyName: user.family_name,givenName:user.given_name
+  });
     console.log("loginProcess");
     jumpToCraftPage();
   }
@@ -85,7 +100,7 @@ export const Homepage = () => {
       </Grid>
       <Grid style={{ height: "90%" }}>
         <div style={{ width: "20%" }}>
-          <GoogleLogin onSuccess={loginProcess} />
+          <GoogleLogin onSuccess={credentialResponse => {loginProcess(credentialResponse.credential)}} />
         </div>
         <div className="introduction"></div>
         <a href="https://www.freepik.com/free-vector/low-code-development-concept-illustration_19184596.htm#page=3&query=low%20code&position=6&from_view=keyword&track=ais">

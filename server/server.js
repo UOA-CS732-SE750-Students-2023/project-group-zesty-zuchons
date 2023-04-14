@@ -35,7 +35,9 @@ mongoose
 const Schema = mongoose.Schema;
 //the some of the variable name are not defined
 const userSchema = new Schema({
-  userName:String,
+  userEmail:String,
+  familyName:String,
+  givenName:String,
   userData:{
       documentName:String,
       test1:String,
@@ -45,18 +47,47 @@ const userSchema = new Schema({
 const user_info = mongoose.model('user_info', userSchema);
 
 //createUserInfo
-app.get('/createUserInfo', (req, res) => {
-  //use the test data to test back-end server connection
-  createUserInfo(insert);
+app.post('/createUserInfo', (req, res) => {
+  createUserInfo(req.body);
   res.send('Creation finished!');
   });
 
+app.get('/getUserInfo/:email', async (req, res) => {
+  const user = await getUserInfo(req.params.email);
+  console.log(user);
+  return res.json(user);
+  });
+
+app.post('/updateUserInfo', (req, res) => {
+  //use the test data to test back-end server connection
+  updateUserInfo(req.body);
+  res.send('updation finished!');
+  });
+  
 async function createUserInfo(userInfo){
   const newUserInfo = new user_info(userInfo);
-  console.log("Start to create new user")
-  await newUserInfo.save();
-  console.log("Creation finished!")
-  return newUserInfo;
+  //check if the user has been created
+  const user = await getUserInfo(newUserInfo.userEmail);
+  if(Object.keys(user).length===0){
+    console.log("Start to create new user")
+    await newUserInfo.save();
+    console.log("Creation finished!")
+  }else {
+    console.log("The user has already been created!")
+  }
+};
+
+async function getUserInfo(email){
+  console.log("Start to finding the user with google email: "+email);
+  const user = await user_info.find({ userEmail: email });
+  console.log(user);
+  return user;
+};
+
+async function updateUserInfo(userInfo){
+  console.log("Start to updating the user with google email: "+userInfo.userEmail);
+  await user_info.findOneAndUpdate({ userEmail: userInfo.userEmail }, userInfo);
+  console.log("Updation finished!")
 };
 
 //this is a test input of creating user info
