@@ -1,6 +1,6 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Navigate } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -23,18 +23,27 @@ interface googleUser {
 export const Homepage = () => {
   const navigate = useNavigate();
 
-  function jumpToCraftPage() {
-    navigate("/craftpage");
+  function jumpToCraftPage(data) {
+    //pass the data to page
+    navigate("/craftpage",{ state: data });
   }
-   async function loginProcess(credential) {
-    const user = jwt<googleUser>(credential);
-    console.log(user.email);
-    //call api to create user when first login
-    const response = await axios.post('http://localhost:3001/createUserInfo', {userEmail: user.email,familyName: user.family_name,givenName:user.given_name
-  });
-    console.log("loginProcess");
-    jumpToCraftPage();
-  }
+
+  async function loginProcess(credential) {
+  const user = jwt<googleUser>(credential);
+  console.log(user.email);
+  // call api to create user when first login
+  const response = await axios.post('http://localhost:3001/createUserInfo', {userEmail: user.email,familyName: user.family_name,givenName:user.given_name
+});
+  console.log(response);
+  // call api to get the user data for loading the saves
+  // wait for insert into database then query the user info 
+  await new Promise(r => setTimeout(r, 500))
+  const response2 = await fetch(`http://localhost:3001/getUserInfo/${user.email}`);
+  const data = await response2.json();
+  console.log("data: ",data);
+  console.log("loginProcess");
+  jumpToCraftPage(data);
+}
 
   //TODO: need to modify to call a login api and then jump to craft page
   return (

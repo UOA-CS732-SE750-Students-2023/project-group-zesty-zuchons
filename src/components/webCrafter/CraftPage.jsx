@@ -22,6 +22,7 @@ import {
 import { Editor, Frame, Element } from "@craftjs/core";
 
 import store from "../../store/store";
+import { useLocation  } from "react-router-dom";
 
 export default function CraftPage() {
   const craftPageStyles = {
@@ -35,6 +36,11 @@ export default function CraftPage() {
       height: "20px",
     },
   };
+
+  //get the data of user
+  const { state } = useLocation();
+  //for the saving json data
+  // console.log(state.userData);
 
   // TODO: merge topbar component with the main canvas component
   return (
@@ -59,7 +65,7 @@ export default function CraftPage() {
         }}
         style={{ height: "100%" }}
       >
-        <Header />
+        <Header data = {state}/>
 
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
           <Grid

@@ -38,11 +38,7 @@ const userSchema = new Schema({
   userEmail:String,
   familyName:String,
   givenName:String,
-  userData:{
-      documentName:String,
-      test1:String,
-      test2:String
-  }
+  userData:Object,
 });
 const user_info = mongoose.model('user_info', userSchema);
 
@@ -53,7 +49,8 @@ app.post('/createUserInfo', (req, res) => {
   });
 
 app.get('/getUserInfo/:email', async (req, res) => {
-  const user = await getUserInfo(req.params.email);
+  const {email} = req.params;
+  const user = await getUserInfo(email);
   console.log(user);
   return res.json(user);
   });
@@ -68,7 +65,7 @@ async function createUserInfo(userInfo){
   const newUserInfo = new user_info(userInfo);
   //check if the user has been created
   const user = await getUserInfo(newUserInfo.userEmail);
-  if(Object.keys(user).length===0){
+  if(user === undefined || user === null){
     console.log("Start to create new user")
     await newUserInfo.save();
     console.log("Creation finished!")
@@ -79,7 +76,7 @@ async function createUserInfo(userInfo){
 
 async function getUserInfo(email){
   console.log("Start to finding the user with google email: "+email);
-  const user = await user_info.find({ userEmail: email });
+  const user = await user_info.findOne({ userEmail: email });
   console.log(user);
   return user;
 };

@@ -12,16 +12,21 @@ import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import axios from 'axios';
 
-export const Header = () => {
+export const Header = ({data}) => {
   const { actions, query, enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
   const navigate = useNavigate();
-  function saveCanvasToServer() {
-    //TODO: save the serialized json of current canvas to backend
-    console.log(query.serialize());
+  async function saveCanvasToServer() {
+    //call the api to save user data into database
+    const response = await axios.post('http://localhost:3001/updateUserInfo', 
+    {userEmail: data.userEmail,familyName: data.familyName,givenName:data.givenName,userData: query.serialize()
+});
+    console.log(response);
+    console.log( query.serialize());
   }
 
   function logout() {
