@@ -40,7 +40,7 @@ export default function CraftPage() {
   //get the data of user
   const { state } = useLocation();
   //for the saving json data
-  // console.log(state.userData);
+  const savedData = state.userData;
 
   // TODO: merge topbar component with the main canvas component
   return (
@@ -83,7 +83,7 @@ export default function CraftPage() {
             </Paper>
           </Grid>
           <Grid item xs={9} style={{ height: "100%", overflow: "auto", backgroundColor: "#eeeeee" }}>
-            <Frame style={craftPageStyles.container}>
+            <Frame style={craftPageStyles.container} json = {savedData}>
               <Element is={Container} padding={20} margin={30} canvas>
                 <Card />
                 <MaterialButton size="small" variant="outlined">
