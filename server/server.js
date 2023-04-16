@@ -89,11 +89,3 @@ async function updateUserInfo(userInfo){
   await user_info.findOneAndUpdate({ userEmail: userInfo.userEmail }, userInfo);
   console.log("Updation finished!")
 };
-
-//this is a test input of creating user info
-const insert = {userName: 'test2',userData:{
-  documentName:'2222',
-  test1:'2222',
-  test2:'4444'
-}
-}
