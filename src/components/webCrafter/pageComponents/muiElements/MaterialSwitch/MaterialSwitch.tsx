@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNode } from "@craftjs/core";
 
+
 import {
   Typography,
   FormControl,
@@ -9,15 +10,23 @@ import {
   MenuItem,
   Switch,
   FormControlLabel,
+  TextField,
 } from "@mui/material";
 
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
-export const MaterialSwitch = ({ label, value, labelPlacement }) => {
+export const MaterialSwitch = ({ 
+  label, 
+  value, 
+  labelPlacement,
+}) => {
   const {
     // declare connector in useNode() to enable drag for the component
     connectors: { connect, drag },
-  } = useNode();
+    isActive,
+  } = useNode((node) => ({
+    isActive: node.events.selected,
+  }));
 
   return (
     // 完善下方setting panel时需同时将prop挂载到主元素上
@@ -36,19 +45,79 @@ const MaterialSwitchSettings = () => {
   const {
     actions: { setProp },
     props,
+    value,
+    label,
+    labelPlacement
   } = useNode((node) => ({
     props: node.data.props,
+    value: node.data.props.value,
+    label: node.data.props.label,
+    labelPlacement: node.data.props.labelPlacement,
   }));
-  return <div></div>;
+  return(
+    <div>
+        <Typography component="div" variant="body1" mt={1}>
+            <FormControl size="small" component="fieldset" fullWidth>
+              <FormLabel component="legend">Value</FormLabel>
+              <Select
+                id="size-select"
+                value={props.value}
+                onChange={(e) =>
+                  setProp((props) => (props.value = e.target.value))
+                }
+                style={componentDefaultStyle.settingPanelSelect}
+              >
+                <MenuItem value="small">Small</MenuItem>
+                <MenuItem value="medium">Medium</MenuItem>
+                <MenuItem value="large">Large</MenuItem>
+              </Select>
+            </FormControl>
+          </Typography>
+
+          <Typography component="div" variant="body1" mt={1}>
+            <FormControl size="small" component="fieldset" fullWidth>
+              <FormLabel component="legend">Label</FormLabel>
+              <TextField
+                id="label-input"
+                value={props.label}
+                onChange={(e) => {
+                  setProp((props) => (props.label = e.target.value));
+                }}
+                style={componentDefaultStyle.settingPanelTextArea}
+              ></TextField>
+            </FormControl>
+          </Typography>
+          
+          <Typography component="div" variant="body1" mt={1}>
+            <FormControl size="small" component="fieldset" fullWidth>
+              <FormLabel component="legend">LabelPlacement</FormLabel>
+              <Select
+                id="lp-select"
+                value={props.labelPlacement}
+                onChange={(e) =>
+                  setProp((props) => (props.labelPlacement = e.target.value))
+                }
+                style={componentDefaultStyle.settingPanelSelect}
+              >
+                <MenuItem value="top">Top</MenuItem>
+                <MenuItem value="start">Start</MenuItem>
+                <MenuItem value="bottom">Bottom</MenuItem>
+                <MenuItem value="end">End</MenuItem>
+              </Select>
+            </FormControl>
+          </Typography>
+
+    </div>)
+  ;
 };
 
 MaterialSwitch.craft = {
   // 完善可配置prop后需要更新此处的默认prop
   props: {
     defaultValue: "Hi",
-    size: "small",
-    variant: "filled",
+    value: "small",
     labelPlacement: "end",
+    label:"hi",
   },
   related: {
     settings: MaterialSwitchSettings,

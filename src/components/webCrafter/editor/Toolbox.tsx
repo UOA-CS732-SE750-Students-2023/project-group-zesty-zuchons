@@ -159,7 +159,14 @@ export const Toolbox = () => {
           <WidgetTooltip title="MaterialSwitch" placement="right">
             <DragIconButton
               aria-label="switch"
-              ref={(ref) => connectors.create(ref, <MaterialSwitch />)}
+              ref={(ref) => connectors.create(ref, 
+              <MaterialSwitch 
+              label= "Hi"
+              size="small"
+              variant= "filled"
+              labelPlacement= "end"
+              //jill更改
+              />)}
             >
               <ToggleOffIcon />
             </DragIconButton>
