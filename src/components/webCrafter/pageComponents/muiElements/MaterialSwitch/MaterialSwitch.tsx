@@ -33,11 +33,9 @@ export const MaterialSwitch = ({
     // 完善下方setting panel时需同时将prop挂载到主元素上
     <div ref={(ref) => connect(drag(ref))}>
       <FormControlLabel
-        size={size}
-        control={<Switch />}
+        control={<Switch size={size}   color={color}/>}
         label={label}
         labelPlacement={labelPlacement}
-        color={color}
       />
     </div>
   );
