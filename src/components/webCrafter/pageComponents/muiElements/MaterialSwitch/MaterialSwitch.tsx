@@ -112,7 +112,7 @@ const MaterialSwitchSettings = () => {
 };
 
 MaterialSwitch.craft = {
-  // 完善可配置prop后需要更新此处的默认prop
+  //default value of the Switch UI
   props: {
     defaultValue: "Hi",
     value: "small",
