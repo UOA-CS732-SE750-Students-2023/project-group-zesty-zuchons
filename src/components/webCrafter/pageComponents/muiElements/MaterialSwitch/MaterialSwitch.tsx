@@ -16,9 +16,10 @@ import {
 import componentDefaultStyle from "../../componentDefaultStyle.js";
 
 export const MaterialSwitch = ({ 
-  label, 
-  value, 
+  label,  
+  color,
   labelPlacement,
+  size,
 }) => {
   const {
     // declare connector in useNode() to enable drag for the component
@@ -32,10 +33,11 @@ export const MaterialSwitch = ({
     // 完善下方setting panel时需同时将prop挂载到主元素上
     <div ref={(ref) => connect(drag(ref))}>
       <FormControlLabel
-        value={value}
+        size={size}
         control={<Switch />}
         label={label}
         labelPlacement={labelPlacement}
+        color={color}
       />
     </div>
   );
@@ -45,31 +47,52 @@ const MaterialSwitchSettings = () => {
   const {
     actions: { setProp },
     props,
-    value,
     label,
-    labelPlacement
+    labelPlacement,
+    color,
+    size
   } = useNode((node) => ({
     props: node.data.props,
-    value: node.data.props.value,
+    size: node.data.props.size,
     label: node.data.props.label,
     labelPlacement: node.data.props.labelPlacement,
+    color:node.data.props.color,
   }));
   return(
     <div>
         <Typography component="div" variant="body1" mt={1}>
             <FormControl size="small" component="fieldset" fullWidth>
-              <FormLabel component="legend">Value</FormLabel>
+              <FormLabel component="legend">Size</FormLabel>
               <Select
                 id="size-select"
-                value={props.value}
+                value={props.size}
                 onChange={(e) =>
-                  setProp((props) => (props.value = e.target.value))
+                  setProp((props) => (props.size = e.target.value))
                 }
                 style={componentDefaultStyle.settingPanelSelect}
               >
                 <MenuItem value="small">Small</MenuItem>
                 <MenuItem value="medium">Medium</MenuItem>
                 <MenuItem value="large">Large</MenuItem>
+              </Select>
+            </FormControl>
+          </Typography>
+
+          <Typography component="div" variant="body1" mt={1}>
+            <FormControl size="small" component="fieldset" fullWidth>
+              <FormLabel component="legend">Color</FormLabel>
+              <Select
+                id="color-select"
+                value={props.color}
+                onChange={(e) =>
+                  setProp((props) => (props.color = e.target.value))
+                }
+                style={componentDefaultStyle.settingPanelSelect}
+              >
+                <MenuItem value="default">Grey</MenuItem>
+                <MenuItem value="primary">Blue</MenuItem>
+                <MenuItem value="warning">Orange</MenuItem>
+                <MenuItem value="success">Green</MenuItem>
               </Select>
             </FormControl>
           </Typography>
@@ -114,10 +137,11 @@ const MaterialSwitchSettings = () => {
 MaterialSwitch.craft = {
   //default value of the Switch UI
   props: {
-    defaultValue: "Hi",
-    value: "small",
+    defaultValue: "Hi there",
+    size: "small",
     labelPlacement: "end",
     label:"hi",
+    color:"primary",
   },
   related: {
     settings: MaterialSwitchSettings,

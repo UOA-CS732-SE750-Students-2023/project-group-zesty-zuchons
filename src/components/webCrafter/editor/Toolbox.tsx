@@ -163,9 +163,9 @@ export const Toolbox = () => {
               <MaterialSwitch 
               label= "Hi"
               size="small"
-              variant= "filled"
               labelPlacement= "end"
-              //jill更改
+              value="small"
+              color="primary"
               />)}
             >
               <ToggleOffIcon />
