@@ -14,57 +14,45 @@
 ## Features
 
 Web Crafter is a low-code website building platform aimed to help people who don't know website programing to buildup their own website by drag and drop.
-- Login with Google authentication (TODO)
+- Login with Google authentication
 - Provide basic widgets for user to buildup the website
 - Provide flexible drag-and-drop feature for people to add and modify the widget for their webpage in canvas
 - Styles and properfies of widget can be modified easily from setting panel
 - Modifiable and customizable switch/button/chip for multiple usage.
 - support event for some of the widget (e.g: support onclick event on button)
+- Auto loading for the canvas if user already saved one
 
 
 ## Tech stacks
-TODO
+
+The main Tech stacks we are using in this project are listed below:
+  - craft.js: An opensource framework for building web builder application
+  - vite: light-weighted frontend react CLI
+  - node.js: open-source, cross-platform JavaScript runtime environment
+  - express: minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications
+  - Jest: testing framework designed to ensure correctness of any JavaScript codebase
 
 
 ## Running Project
 
 1. Setup environment.
 
-2. Install packages
+2. Run the project
 
 ```bash
-npm install
+npm run start-all
 ```
 
-3. Build the application
+This command will start up frontend and backend at the same time so you don't need to cd to different folder to start them seperately.
+
+Or if you are running the project first time:
 
 ```bash
-npm run build
+npm run start-all-first-time
 ```
+This command will install all needed package for frontend and backend as well as starting up them at the same time
 
-4. Run application
-
-```bash
-npm run start
-```
-
-TODO: frontend and backend setup will be handled properly by `npm run start` command when the project is finished.
-
-Plan to merge every project setting up command into a single command.
-
-to run in dev mode:
-
-```bash
-npm run dev
-```
-
-to run the back-end server:
-
-```bash
-node server.js
-```
 Database server link:
-
 mongodb+srv://zzq961213:Aa12345678@cluster0.5ewkh2k.mongodb.net/database
 
 ## Tests
@@ -74,7 +62,10 @@ Run `npm test` in the project root to execute the unit tests via [Jest](https://
 ## Wiki
 
 The wiki can contains all meeting notes and major design decisions, rationale and project management information.
-TODO...
+
+## ScreenShots
+
+todo
 
 ## Contributors
 
