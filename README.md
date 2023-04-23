@@ -52,6 +52,20 @@ npm run start-all-first-time
 ```
 This command will install all needed package for frontend and backend as well as starting up them at the same time
 
+3. If the command above doesn't work, then you needed to install the packages and start up frontend and backend manually
+
+Run the command below to start frontend
+```bash
+npm install (only if you are running the project at the first time)
+npm run start
+```
+
+then cd to `server` folder, run the command below to start backend
+```bash
+npm install (only if you are running the project at the first time)
+node server.js
+```
+
 Database server link:
 mongodb+srv://zzq961213:Aa12345678@cluster0.5ewkh2k.mongodb.net/database
 
