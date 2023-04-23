@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "start-all": "concurrently \"vite\" \"cd server && node server.js\""
+    "start-all": "concurrently \"vite\" \"cd server && node server.js\"",
+    "start-all-first-time": "npm install && concurrently \"vite\" \"cd server && npm install && node server.js\""
   },
   "dependencies": {
     "@craftjs/core": "^0.2.0-beta.8",
