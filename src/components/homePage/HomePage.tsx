@@ -1,7 +1,6 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate, Navigate } from "react-router-dom";
-import CloseIcon from '@mui/icons-material/Close';
 import {
   Box,
   Grid,
@@ -54,32 +53,8 @@ export const Homepage = () => {
   //TODO: need to modify to call a login api and then jump to craft page
   return (
     <div className="homepage" style={{ height: "100%", width: "100%" }}>
-      
-      <Grid 
-      className="homepage-header"
-      xs={2}
-      style={{ height: "10%", width: "100%"}}
-    >
-
-      <div style={{background:"lightblue",textAlign:"center"}}>
-      <Typography color="text.primary" style={{ position: "relative",height:"40px",top:"8px"}} >
-      Announcing our usage-based pricing.
-      </Typography>
-      </div>
-
-
-      <Button  
-      style={{ position: "absolute", right: "0px",top:"0px" }}
-      ><CloseIcon />    
-      
-      </Button>
-
-    </Grid>
-      
-      
-      
       <Grid
-        className="homepage-hnavigation"
+        className="homepage-header"
         item
         alignItems="left"
         xs={2}
@@ -89,7 +64,7 @@ export const Homepage = () => {
           height: "100%",
           overflow: "auto",
         }}
-        style={{ height: "8%", width: "100%" }}
+        style={{ height: "10%", width: "100%" }}
       >
         <img
           src="../../../assets/logo.svg"
@@ -98,7 +73,7 @@ export const Homepage = () => {
             width: "70px",
             position: "absolute",
             left: "100px",
-            top: "55px",
+            top: "-3px",
           }}
         ></img>
         <img
@@ -106,13 +81,13 @@ export const Homepage = () => {
           style={{
             position: "absolute",
             left: "143px",
-            top: "45px",
+            top: "-8px",
             height: "90px",
           }}
         ></img>
         <div
           className="header-breadcrumb"
-          style={{ position: "absolute", right: "30px", top: "70px" }}
+          style={{ position: "absolute", right: "100px", top: "30px" }}
         >
           <Breadcrumbs aria-label="breadcrumb">
             <Link
@@ -138,7 +113,7 @@ export const Homepage = () => {
         </div>
       </Grid>
       <Grid style={{ height: "90%" }}>
-        <div style={{ width: "10%" }}>
+        <div style={{ width: "20%" }}>
           <GoogleLogin
             onSuccess={(credentialResponse) => {
               loginProcess(credentialResponse.credential);
