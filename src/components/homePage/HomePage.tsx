@@ -9,9 +9,14 @@ import {
   Breadcrumbs,
   Link,
   Typography,
+  List,
+  ListItemIcon,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import jwt from "jwt-decode";
 import axios from "axios";
+import CheckIcon from "@mui/icons-material/Check";
 
 //define the jwt decode object
 interface googleUser {
@@ -112,28 +117,93 @@ export const Homepage = () => {
           </Breadcrumbs>
         </div>
       </Grid>
-      <Grid style={{ height: "90%" }}>
-        <div style={{ width: "20%" }}>
-          <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              loginProcess(credentialResponse.credential);
-            }}
-          />
+      <Grid style={{ height: "85%" }}>
+        <div
+          className="introduction"
+          style={{
+            paddingLeft: "50px",
+            paddingTop: "50px",
+          }}
+        >
+          <Grid item xs={12} md={6}>
+            <Typography
+              sx={{ mt: 4, mb: 2 }}
+              variant="h6"
+              component="div"
+              style={{ color: "#424242" }}
+            >
+              Open-source website builder powered by craft.js
+            </Typography>
+            <Typography
+              sx={{ mt: 4, mb: 2 }}
+              variant="h5"
+              component="div"
+              style={{ color: "#424242" }}
+            >
+              An extensible, light-weighted lowcode website builder
+            </Typography>
+            <List>
+              <ListItem disablePadding>
+                <ListItemIcon>
+                  <CheckIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Quickly build Website with ready React-powered widgets"
+                  style={{ color: "#424242" }}
+                />
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemIcon>
+                  <CheckIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Customize and extend functionality with code"
+                  style={{ color: "#424242" }}
+                />
+              </ListItem>
+            </List>
+
+            <div className="login">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  loginProcess(credentialResponse.credential);
+                }}
+              />
+            </div>
+          </Grid>
         </div>
-        <div className="introduction"></div>
         <a href="https://www.freepik.com/free-vector/low-code-development-concept-illustration_19184596.htm#page=3&query=low%20code&position=6&from_view=keyword&track=ais">
           <img
             src="../../../assets/home.jpg"
             alt="Image by storyset on Freepik"
             style={{
-              height: "700px",
-              width: "700px",
+              height: "650px",
+              width: "650px",
               position: "absolute",
-              right: "100px",
-              top: "100px",
+              right: "50px",
+              top: "90px",
             }}
           ></img>
         </a>
+      </Grid>
+      <Grid
+        sx={{
+          borderTop: 1,
+          borderColor: "grey.300",
+          height: "100%",
+          overflow: "auto",
+        }}
+        style={{ height: "5%" }}
+      >
+        <Typography
+          variant="caption"
+          component="div"
+          style={{ color: "#424242", textAlign:"center", paddingTop: "10px"}}
+        >
+          Group project for team Zesty Zuchons for COMSCI732 in UOA, All rights
+          reserved to Zixuan Wen, Mianmian Zheng, Yue Wang, Ziqi Zhong, Qiufan
+          Qian
+        </Typography>
       </Grid>
     </div>
   );
