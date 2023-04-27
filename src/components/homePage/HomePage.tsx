@@ -101,6 +101,7 @@ export const Homepage = () => {
               href="https://github.com/UOA-CS732-SE750-Students-2023/project-group-zesty-zuchons"
               target="_blank"
               rel="noopener"
+              style={{color: "#039be5"}}
             >
               Github
             </Link>
@@ -110,14 +111,14 @@ export const Homepage = () => {
               href="https://craft.js.org/"
               target="_blank"
               rel="noopener"
+              style={{color: "#039be5"}}
             >
               Resources
             </Link>
-            <Typography color="text.primary">Breadcrumbs</Typography>
           </Breadcrumbs>
         </div>
       </Grid>
-      <Grid style={{ height: "85%" }}>
+      <Grid style={{ height: "85%", width: "100%", backgroundColor: "#f2fbff"}}>
         <div
           className="introduction"
           style={{
@@ -125,7 +126,7 @@ export const Homepage = () => {
             paddingTop: "50px",
           }}
         >
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} >
             <Typography
               sx={{ mt: 4, mb: 2 }}
               variant="h6"
@@ -172,19 +173,17 @@ export const Homepage = () => {
             </div>
           </Grid>
         </div>
-        <a href="https://www.freepik.com/free-vector/low-code-development-concept-illustration_19184596.htm#page=3&query=low%20code&position=6&from_view=keyword&track=ais">
+
           <img
-            src="../../../assets/home.jpg"
-            alt="Image by storyset on Freepik"
+            src="../../../assets/home.png"
             style={{
-              height: "650px",
-              width: "650px",
+              height: "550px",
+              width: "700px",
               position: "absolute",
               right: "50px",
-              top: "90px",
+              top: "100px",
             }}
           ></img>
-        </a>
       </Grid>
       <Grid
         sx={{
