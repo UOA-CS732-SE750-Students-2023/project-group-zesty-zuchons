@@ -17,6 +17,9 @@ import {
 import jwt from "jwt-decode";
 import axios from "axios";
 import CheckIcon from "@mui/icons-material/Check";
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import CodeIcon from '@mui/icons-material/Code';
+import WebIcon from '@mui/icons-material/Web';
 
 //define the jwt decode object
 interface googleUser {
@@ -78,7 +81,7 @@ export const Homepage = () => {
             width: "70px",
             position: "absolute",
             left: "100px",
-            top: "-3px",
+            top: "3px",
           }}
         ></img>
         <img
@@ -143,22 +146,31 @@ export const Homepage = () => {
             >
               An extensible, light-weighted lowcode website builder
             </Typography>
-            <List>
-              <ListItem disablePadding>
+            <List style={{paddingLeft: "20px"}}>
+              <ListItem>
                 <ListItemIcon>
-                  <CheckIcon />
+                  <WebIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Quickly build Website with ready React-powered widgets"
                   style={{ color: "#424242" }}
                 />
               </ListItem>
-              <ListItem disablePadding>
+              <ListItem>
                 <ListItemIcon>
-                  <CheckIcon />
+                  <CodeIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Customize and extend functionality with code"
+                  style={{ color: "#424242" }}
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <FolderOpenIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="open-source that allows developer to extend their own widget"
                   style={{ color: "#424242" }}
                 />
               </ListItem>
