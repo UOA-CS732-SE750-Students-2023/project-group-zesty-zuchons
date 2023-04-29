@@ -20,7 +20,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import CodeIcon from '@mui/icons-material/Code';
 import WebIcon from '@mui/icons-material/Web';
-
+import styles from '../../../assets/HomePage.module.css';
 //define the jwt decode object
 interface googleUser {
   email: string;
@@ -98,23 +98,21 @@ export const Homepage = () => {
           style={{ position: "absolute", right: "100px", top: "30px" }}
         >
           <Breadcrumbs aria-label="breadcrumb">
-            <Link
+            <Link className={styles.link}
               underline="hover"
               color="inherit"
               href="https://github.com/UOA-CS732-SE750-Students-2023/project-group-zesty-zuchons"
               target="_blank"
               rel="noopener"
-              style={{color: "#039be5"}}
             >
               Github
             </Link>
-            <Link
+            <Link className={styles.link}
               underline="hover"
               color="inherit"
               href="https://craft.js.org/"
               target="_blank"
               rel="noopener"
-              style={{color: "#039be5"}}
             >
               Resources
             </Link>
@@ -176,7 +174,7 @@ export const Homepage = () => {
               </ListItem>
             </List>
 
-            <div className="login">
+            <div className={styles.login}>
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   loginProcess(credentialResponse.credential);
