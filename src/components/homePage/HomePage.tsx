@@ -122,6 +122,15 @@ export const Homepage = () => {
             >
               Resources
             </Link>
+            <Link
+              className={styles.link}
+              underline="hover"
+              color="inherit"
+              href="mailto:rikka9816@gmail.com"
+              rel="noopener"
+            >
+              Contact
+            </Link>
           </Breadcrumbs>
         </div>
       </Grid>
@@ -146,7 +155,7 @@ export const Homepage = () => {
               Open-source website builder powered by craft.js
             </Typography>
             <Typography
-              sx={{ mt: 4, mb: 2, fontWeight: 'bold'  }}
+              sx={{ mt: 4, mb: 2, fontWeight: "bold" }}
               variant="h3"
               component="div"
               style={{ color: "#424242" }}
