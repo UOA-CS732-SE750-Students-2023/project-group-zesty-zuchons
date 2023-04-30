@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { Grid, Paper, Box, Typography } from "@mui/material";
 
@@ -22,7 +23,7 @@ import {
 import { Editor, Frame, Element } from "@craftjs/core";
 
 import store from "../../store/store";
-import { useLocation  } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function CraftPage() {
   const craftPageStyles = {
@@ -41,6 +42,7 @@ export default function CraftPage() {
   const { state } = useLocation();
   //for the saving json data
   const savedData = state.userData;
+  let canvasEditable = store.getState();
 
   // TODO: merge topbar component with the main canvas component
   return (
@@ -65,7 +67,7 @@ export default function CraftPage() {
         }}
         style={{ height: "100%" }}
       >
-        <Header data = {state}/>
+        <Header data={state} />
 
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
           <Grid
@@ -77,13 +79,24 @@ export default function CraftPage() {
               height: "100%",
               overflow: "auto",
             }}
+            style={{
+              display: canvasEditable ? "inhirit" : "none"
+            }}
           >
             <Paper style={craftPageStyles.container}>
               <Toolbox />
             </Paper>
           </Grid>
-          <Grid item xs={9} style={{ height: "100%", overflow: "auto", backgroundColor: "#eeeeee" }}>
-            <Frame style={craftPageStyles.container} json = {savedData}>
+          <Grid
+            item
+            xs={9}
+            style={{
+              height: "100%",
+              overflow: "auto",
+              backgroundColor: "#eeeeee",
+            }}
+          >
+            <Frame style={craftPageStyles.container} json={savedData}>
               <Element is={Container} padding={20} margin={30} canvas>
                 <Card />
                 <MaterialButton size="small" variant="outlined">
@@ -110,13 +123,16 @@ export default function CraftPage() {
               <Grid
                 container
                 alignItems="center"
-                style={{ borderBottom: "1px solid #e0e0e0" }}
+                style={{
+                  borderBottom: "1px solid #e0e0e0",
+                  display: canvasEditable ? "inhirit" : "none",
+                }}
               >
                 <Grid item xs>
                   <SettingsIcon
                     style={{
                       position: "relative",
-                      float:"left",
+                      float: "left",
                       color: "#ffffff",
                       paddingLeft: "5px",
                       paddingTop: "2px",

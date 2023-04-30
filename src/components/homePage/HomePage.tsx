@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
+import GoogleButton from "react-google-button";
 import { useNavigate, Navigate } from "react-router-dom";
 import {
   Box,
@@ -13,14 +14,17 @@ import {
   ListItemIcon,
   ListItem,
   ListItemText,
+  Divider,
 } from "@mui/material";
 import jwt from "jwt-decode";
 import axios from "axios";
 import CheckIcon from "@mui/icons-material/Check";
-import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import CodeIcon from '@mui/icons-material/Code';
-import WebIcon from '@mui/icons-material/Web';
-import styles from '../../../assets/HomePage.module.css';
+import FolderOpenIcon from "@mui/icons-material/FolderOpen";
+import CodeIcon from "@mui/icons-material/Code";
+import WebIcon from "@mui/icons-material/Web";
+import AutoModeIcon from "@mui/icons-material/AutoMode";
+import styles from "../../../assets/HomePage.module.css";
+
 //define the jwt decode object
 interface googleUser {
   email: string;
@@ -98,7 +102,8 @@ export const Homepage = () => {
           style={{ position: "absolute", right: "100px", top: "30px" }}
         >
           <Breadcrumbs aria-label="breadcrumb">
-            <Link className={styles.link}
+            <Link
+              className={styles.link}
               underline="hover"
               color="inherit"
               href="https://github.com/UOA-CS732-SE750-Students-2023/project-group-zesty-zuchons"
@@ -107,7 +112,8 @@ export const Homepage = () => {
             >
               Github
             </Link>
-            <Link className={styles.link}
+            <Link
+              className={styles.link}
               underline="hover"
               color="inherit"
               href="https://craft.js.org/"
@@ -119,15 +125,18 @@ export const Homepage = () => {
           </Breadcrumbs>
         </div>
       </Grid>
-      <Grid style={{ height: "85%", width: "100%", backgroundColor: "#f2fbff"}}>
+      <Grid
+        style={{ height: "85%", width: "100%", backgroundColor: "#f2fbff" }}
+      >
         <div
           className="introduction"
           style={{
             paddingLeft: "50px",
             paddingTop: "50px",
+            width: "45%",
           }}
         >
-          <Grid item xs={12} md={6} >
+          <Grid item xs={12} md={6}>
             <Typography
               sx={{ mt: 4, mb: 2 }}
               variant="h6"
@@ -144,7 +153,7 @@ export const Homepage = () => {
             >
               An extensible, light-weighted lowcode website builder
             </Typography>
-            <List style={{paddingLeft: "20px"}}>
+            <List style={{ paddingLeft: "20px" }}>
               <ListItem>
                 <ListItemIcon>
                   <WebIcon />
@@ -172,9 +181,29 @@ export const Homepage = () => {
                   style={{ color: "#424242" }}
                 />
               </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <AutoModeIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Structured database for saveing your website and auto-loading feature for website for users"
+                  style={{ color: "#424242" }}
+                />
+              </ListItem>
             </List>
-
-            <div className={styles.login}>
+            <Divider color="#e0e0e0"></Divider>
+            <Typography
+              sx={{ mt: 4, mb: 2 }}
+              variant="subtitle1"
+              component="div"
+              style={{ color: "#424242" }}
+            >
+              login with google:
+            </Typography>
+            <div
+              className="google-login"
+              style={{ position: "relative", top: "-50px", left: "175px" }}
+            >
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   loginProcess(credentialResponse.credential);
@@ -184,16 +213,16 @@ export const Homepage = () => {
           </Grid>
         </div>
 
-          <img
-            src="../../../assets/home.png"
-            style={{
-              height: "550px",
-              width: "700px",
-              position: "absolute",
-              right: "50px",
-              top: "100px",
-            }}
-          ></img>
+        <img
+          src="../../../assets/home.png"
+          style={{
+            height: "550px",
+            width: "700px",
+            position: "absolute",
+            right: "50px",
+            top: "100px",
+          }}
+        ></img>
       </Grid>
       <Grid
         sx={{
@@ -207,7 +236,7 @@ export const Homepage = () => {
         <Typography
           variant="caption"
           component="div"
-          style={{ color: "#424242", textAlign:"center", paddingTop: "10px"}}
+          style={{ color: "#424242", textAlign: "center", paddingTop: "10px" }}
         >
           Group project for team Zesty Zuchons for COMSCI732 in UOA, All rights
           reserved to Zixuan Wen, Mianmian Zheng, Yue Wang, Ziqi Zhong, Qiufan
