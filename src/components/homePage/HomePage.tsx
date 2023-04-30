@@ -146,8 +146,8 @@ export const Homepage = () => {
               Open-source website builder powered by craft.js
             </Typography>
             <Typography
-              sx={{ mt: 4, mb: 2 }}
-              variant="h5"
+              sx={{ mt: 4, mb: 2, fontWeight: 'bold'  }}
+              variant="h3"
               component="div"
               style={{ color: "#424242" }}
             >
@@ -220,7 +220,7 @@ export const Homepage = () => {
             width: "700px",
             position: "absolute",
             right: "50px",
-            top: "100px",
+            top: "150px",
           }}
         ></img>
       </Grid>
