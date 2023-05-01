@@ -1,6 +1,5 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import GoogleButton from "react-google-button";
 import { useNavigate, Navigate } from "react-router-dom";
 import {
   Box,
@@ -211,12 +210,15 @@ export const Homepage = () => {
             </Typography>
             <div
               className="google-login"
-              style={{ position: "relative", top: "-50px", left: "175px" }}
+              style={{ position: "relative", top: "-50px", left: "145px" }}
             >
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   loginProcess(credentialResponse.credential);
                 }}
+                type="icon"
+                shape="circle"
+               
               />
             </div>
           </Grid>
