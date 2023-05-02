@@ -47,18 +47,19 @@ export const Homepage = () => {
       userEmail: user.email,
       familyName: user.family_name,
       givenName: user.given_name,
+    }).then(async response => {
+      console.log(response);
+      // call api to get the user data for loading the saves
+      // wait for insert into database then query the user info
+      // await new Promise((r) => setTimeout(r, 500));
+      const response2 = await fetch(
+        `http://localhost:3001/getUserInfo/${user.email}`
+      );
+      const data = await response2.json();
+      console.log("data: ", data);
+      console.log("loginProcess");
+      jumpToCraftPage(data);
     });
-    console.log(response);
-    // call api to get the user data for loading the saves
-    // wait for insert into database then query the user info
-    await new Promise((r) => setTimeout(r, 500));
-    const response2 = await fetch(
-      `http://localhost:3001/getUserInfo/${user.email}`
-    );
-    const data = await response2.json();
-    console.log("data: ", data);
-    console.log("loginProcess");
-    jumpToCraftPage(data);
   }
 
   //TODO: need to modify to call a login api and then jump to craft page
