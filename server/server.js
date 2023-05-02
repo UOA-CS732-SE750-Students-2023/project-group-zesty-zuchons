@@ -15,6 +15,9 @@ app.use(cors());
 //Setting up routes
 app.use("/", routes);
 
+const swaggerUi = require('swagger-ui-express'),
+swaggerDocument = require('./swagger.json');
+
 //database server address "mongodb+srv://zzq961213:Aa12345678@cluster0.5ewkh2k.mongodb.net/database"
 mongoose
   .connect('mongodb+srv://zzq961213:Aa12345678@cluster0.5ewkh2k.mongodb.net/database', { useNewUrlParser: true })
@@ -22,8 +25,14 @@ mongoose
     console.log("MongoDB connection successful");
   })
   .then(() => {
-    app.listen(port, () =>
-      console.log(`App server listening on port ${port}!`)
+    app.use(
+      '/',
+      swaggerUi.serve, 
+      swaggerUi.setup(swaggerDocument)
+    );
+    app.listen(port, () => {
+      console.log(`App server listening on port ${port}!`);
+      console.log(`Test the api on swagger: http://localhost:${port}`)}
     );
   })
   .catch((error) => {
