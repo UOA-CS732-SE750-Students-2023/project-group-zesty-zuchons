@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import store from "../../../store/store";
 import {
   setEditableTrue,
@@ -24,8 +24,8 @@ export const Header = ({data}) => {
     //call the api to save user data into database
     const response = await axios.post('http://localhost:3001/updateUserInfo', 
     {userEmail: data.userEmail,familyName: data.familyName,givenName:data.givenName,userData: query.serialize()
-});
-    console.log(response);
+}).then(response => alert('You works have been saved!'));
+    // console.log(response);
     console.log( query.serialize());
   }
 
