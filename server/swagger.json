@@ -1,0 +1,107 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0", 
+        "title": "Web Crafter API swagger"
+        },
+    "host": "localhost:3001",
+    "basePath": "/",
+    "tags": [
+    {
+        "name": "Users",
+        "description": "API for interaction the users data"
+    }
+    ],
+    "paths": {
+        "/getUserInfo/{email}": {
+            "parameters": [
+                {
+                    "name": "email",
+                    "in": "path",
+                    "required": true,
+                    "description": "google email of the user",
+                    "type": "string"
+                }
+                ],
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get the user information by google email",
+                "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+                }
+            }
+        },
+        "/createUserInfo": {
+            "post": {
+                "summary": "Insert new user in database when first login with google account",
+                "tags": ["Users"],
+                "parameters": [
+                {
+                    "name": "user",
+                    "in": "body",
+                    "description": "User that we want to create",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            ],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Creation finished!"
+                    }
+                }
+          }
+        },
+        "/updateUserInfo": {
+            "post": {
+                "summary": "Update the user information",
+                "tags": ["Users"],
+                "parameters": [
+                {
+                    "name": "user",
+                    "in": "body",
+                    "description": "User that we want to update",
+                    "schema": {
+                        "$ref": "#/definitions/User"
+                    }
+                }
+              ],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Updation finished!"
+                    }
+                }
+            }
+          }
+      },
+    "definitions": {
+    "User": {
+        "required": ["userEmail"],
+        "properties": {
+        "userEmail": {
+            "type": "string",
+            "uniqueItems": true
+        },
+        "familyName": {
+            "type": "string"
+        },
+        "givenName": {
+            "type": "string"
+        },
+        "userData": {
+            "type": "string"
+        }
+        }
+    }
+    },
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+  }
