@@ -6,17 +6,25 @@ import {
 } from "../../../store/action/editable";
 import { useEditor } from "@craftjs/core";
 
-import { Box, Grid, Button, FormControlLabel, Switch, Alert,
-  AlertTitle,Snackbar } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Button,
+  FormControlLabel,
+  Switch,
+  Alert,
+  AlertTitle,
+  Snackbar,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
-import { useNavigate} from "react-router-dom";
-import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export const Header = ({data}) => {
+export const Header = ({ data }) => {
   const { actions, query, enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
@@ -25,11 +33,18 @@ export const Header = ({data}) => {
 
   async function saveCanvasToServer() {
     //call the api to save user data into database
-    const response = await axios.post('http://localhost:3001/updateUserInfo', 
-    {userEmail: data.userEmail,familyName: data.familyName,givenName:data.givenName,userData: query.serialize()
-}).then(response => {setOpen(true)});
+    const response = await axios
+      .post("http://localhost:3001/updateUserInfo", {
+        userEmail: data.userEmail,
+        familyName: data.familyName,
+        givenName: data.givenName,
+        userData: query.serialize(),
+      })
+      .then((response) => {
+        setOpen(true);
+      });
     console.log(response);
-    console.log( query.serialize());
+    console.log(query.serialize());
   }
 
   function logout() {
@@ -57,8 +72,7 @@ export const Header = ({data}) => {
     setOpen(false);
   };
 
-
-  return (  
+  return (
     <Box className="header" sx={{ borderBottom: 1, borderColor: "grey.300" }}>
       <Grid container alignItems="left">
         <img
@@ -99,11 +113,16 @@ export const Header = ({data}) => {
           Logout
         </TopbarButton>
       </Grid>
-      <Snackbar open={open} autoHideDuration={3000} anchorOrigin={ {vertical: 'top', horizontal: 'center' }} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          <AlertTitle>Success</AlertTitle>
-            You works have been saved!
-       
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        style={{top:"24px"}}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          <AlertTitle>Saving success</AlertTitle>
+          You works have been saved successfully!
         </Alert>
       </Snackbar>
     </Box>
