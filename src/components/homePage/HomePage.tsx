@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate, Navigate } from "react-router-dom";
 import {
@@ -15,8 +15,7 @@ import {
   ListItemText,
   Divider,
   Snackbar,
-  CircularProgress
-
+  CircularProgress,
 } from "@mui/material";
 import jwt from "jwt-decode";
 import axios from "axios";
@@ -34,7 +33,6 @@ interface googleUser {
   given_name: string;
 }
 
-
 export const Homepage = () => {
   const navigate = useNavigate();
 
@@ -45,39 +43,42 @@ export const Homepage = () => {
 
   async function loginProcess(credential) {
     //test the process icon for waiting api response
-    await new Promise((r) => setTimeout(r, 5000));
-    
+    // await new Promise((r) => setTimeout(r, 5000));
+   
+
     const user = jwt<googleUser>(credential);
     console.log(user.email);
     // call api to create user when first login
-    const response = await axios.post("http://localhost:3001/createUserInfo", {
-      userEmail: user.email,
-      familyName: user.family_name,
-      givenName: user.given_name,
-    }).then(async response => {
-      console.log(response);
-      // call api to get the user data for loading the saves
-      // wait for insert into database then query the user info
-      // await new Promise((r) => setTimeout(r, 500));
-      const response2 = await fetch(
-        `http://localhost:3001/getUserInfo/${user.email}`
-      );
-      const data = await response2.json();
-      console.log("data: ", data);
-      console.log("loginProcess");
-      //close the proccess icon
-      handleClose();
+    const response = await axios
+      .post("http://localhost:3001/createUserInfo", {
+        userEmail: user.email,
+        familyName: user.family_name,
+        givenName: user.given_name,
+      })
+      .then(async (response) => {
+        console.log(response);
+        // call api to get the user data for loading the saves
+        // wait for insert into database then query the user info
+        // await new Promise((r) => setTimeout(r, 500));
+        const response2 = await fetch(
+          `http://localhost:3001/getUserInfo/${user.email}`
+        );
+        const data = await response2.json();
+        console.log("data: ", data);
+        console.log("loginProcess");
+        //close the proccess icon
+        handleClose();
 
-      jumpToCraftPage(data);
-    });
+        jumpToCraftPage(data);
+      });
   }
 
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
-      setOpen(false);
-    };
-  
+    setOpen(false);
+  };
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -85,9 +86,25 @@ export const Homepage = () => {
   //TODO: need to modify to call a login api and then jump to craft page
   return (
     <div className="homepage" style={{ height: "100%", width: "100%" }}>
-      <Snackbar open={open} anchorOrigin={ {vertical: 'top', horizontal: 'center' }} 
-      sx={{ height: "100%" }} onClose={handleClose}>
-      <CircularProgress />
+      <Snackbar
+        open={open}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        style={{ background: "rgba(0, 0, 0, 0.3)", top: 0 }}
+        sx={{ height: "100%", width: "100%" }}
+        onClose={handleClose}
+      >
+        <div>
+          <CircularProgress style={{color: "#0288d1"}}/>
+          <Typography
+              sx={{ mt: 4, mb: 2, fontWeight: "bold" }}
+              variant="h6"
+              component="div"
+              style={{ color: "#0288d1", position:"relative", left:"-45px"}}
+            >
+              Now Loading...
+            </Typography>
+          
+        </div>
       </Snackbar>
       <Grid
         className="homepage-header"
@@ -244,7 +261,6 @@ export const Homepage = () => {
                 }}
                 type="icon"
                 shape="circle"
-               
               />
             </div>
           </Grid>
