@@ -1,7 +1,7 @@
-import React from "react";
+import React,{ useState } from "react";
 import { useSelector } from "react-redux";
 
-import { Grid, Paper, Box, Typography } from "@mui/material";
+import { Grid, Paper, Box, Typography,Snackbar,Alert,AlertTitle,CircularProgress  } from "@mui/material";
 
 import { Toolbox } from "./editor/Toolbox";
 import { SettingsPanel } from "./editor/SettingsPanel";
@@ -25,6 +25,7 @@ import { Editor, Frame, Element } from "@craftjs/core";
 import store from "../../store/store";
 import { useLocation } from "react-router-dom";
 
+
 export default function CraftPage() {
   const craftPageStyles = {
     gridContainer: {
@@ -44,6 +45,12 @@ export default function CraftPage() {
   const savedData = state.userData;
   let canvasEditable = store.getState();
 
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   // TODO: merge topbar component with the main canvas component
   return (
     <div
@@ -53,6 +60,13 @@ export default function CraftPage() {
         ...craftPageStyles.container,
       }}
     >
+      
+      <Snackbar open={open} autoHideDuration={3000} anchorOrigin={ {vertical: 'top', horizontal: 'center' }} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          <AlertTitle>Success</AlertTitle>
+            Loading data successfully!
+        </Alert>
+      </Snackbar>
       <Editor
         resolver={{
           Card,
@@ -68,7 +82,6 @@ export default function CraftPage() {
         style={{ height: "100%" }}
       >
         <Header data={state} />
-
         <Grid container spacing={0} style={craftPageStyles.gridContainer}>
           <Grid
             item

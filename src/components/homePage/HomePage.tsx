@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate, Navigate } from "react-router-dom";
 import {
@@ -14,6 +14,9 @@ import {
   ListItem,
   ListItemText,
   Divider,
+  Snackbar,
+  CircularProgress
+
 } from "@mui/material";
 import jwt from "jwt-decode";
 import axios from "axios";
@@ -31,6 +34,7 @@ interface googleUser {
   given_name: string;
 }
 
+
 export const Homepage = () => {
   const navigate = useNavigate();
 
@@ -40,6 +44,9 @@ export const Homepage = () => {
   }
 
   async function loginProcess(credential) {
+    //test the process icon for waiting api response
+    await new Promise((r) => setTimeout(r, 5000));
+    
     const user = jwt<googleUser>(credential);
     console.log(user.email);
     // call api to create user when first login
@@ -58,13 +65,30 @@ export const Homepage = () => {
       const data = await response2.json();
       console.log("data: ", data);
       console.log("loginProcess");
+      //close the proccess icon
+      handleClose();
+
       jumpToCraftPage(data);
     });
   }
 
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+      setOpen(false);
+    };
+  
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   //TODO: need to modify to call a login api and then jump to craft page
   return (
     <div className="homepage" style={{ height: "100%", width: "100%" }}>
+      <Snackbar open={open} anchorOrigin={ {vertical: 'top', horizontal: 'center' }} 
+      sx={{ height: "100%" }} onClose={handleClose}>
+      <CircularProgress />
+      </Snackbar>
       <Grid
         className="homepage-header"
         item
@@ -215,6 +239,7 @@ export const Homepage = () => {
             >
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
+                  handleOpen();
                   loginProcess(credentialResponse.credential);
                 }}
                 type="icon"
