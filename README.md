@@ -27,15 +27,17 @@ Web Crafter is a low-code website building platform aimed to help people who don
 
 The main Tech stacks we are using in this project are listed below:
   - craft.js: An opensource framework for building web builder application
+  - material UI: Styling library used for both styling the application and widget in the application
   - vite: light-weighted frontend react CLI
   - node.js: open-source, cross-platform JavaScript runtime environment
   - express: minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications
   - Jest: testing framework designed to ensure correctness of any JavaScript codebase
+  - Swagger: Dashbord for managing / testing backend APIs
 
 
 ## Running Project
 
-1. Setup environment.
+1. Setup nodejs environment.
 
 2. Run the project
 
@@ -65,9 +67,6 @@ then cd to `server` folder, run the command below to start backend
 npm install (only if you are running the project at the first time)
 node server.js
 ```
-
-Database server link:
-mongodb+srv://zzq961213:Aa12345678@cluster0.5ewkh2k.mongodb.net/database
 
 ## Tests
 
