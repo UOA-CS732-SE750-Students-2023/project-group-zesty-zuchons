@@ -74,7 +74,10 @@ The wiki can contains all meeting notes and major design decisions, rationale an
 
 ## ScreenShots
 
-todo
+<p align="center">
+  <img src="./public/sc1.png"/>
+  <img src="./public/sc2.png"/>
+</p>
 
 ## Contributors
 
