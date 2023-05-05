@@ -54,13 +54,13 @@ This command will install all needed package for frontend and backend as well as
 
 Run the command below to start frontend
 ```bash
-npm install (only if you are running the project at the first time)
+npm install #(only if you are running the project at the first time)
 npm run start
 ```
 
 then cd to `server` folder, run the command below to start backend
 ```bash
-npm install (only if you are running the project at the first time)
+npm install #(only if you are running the project at the first time)
 node server.js
 ```
 
