@@ -33,7 +33,7 @@ The main Tech stacks we are using in this project are listed below:
 
 ## Running Project
 
-1. Setup nodejs environment.
+1. Setup nodejs environment, make sure MongoDB is installed on the computer.
 
 2. Run the project
 
