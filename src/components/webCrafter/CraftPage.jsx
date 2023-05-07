@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 import { useSelector } from "react-redux";
 
-import { Grid, Paper, Box, Typography,Snackbar,Alert,AlertTitle,CircularProgress  } from "@mui/material";
+import { Grid, Paper, Box, Typography,Snackbar,Alert,AlertTitle,CircularProgress,Select,MenuItem,FormControl,InputLabel  } from "@mui/material";
 
 import { Toolbox } from "./editor/Toolbox";
 import { SettingsPanel } from "./editor/SettingsPanel";
@@ -18,6 +18,8 @@ import {
   MaterialTextField,
   MaterialChip,
   MaterialSwitch,
+  MaterialSelect,
+  MaterialRating,
 } from "./pageComponents/exportComponents";
 
 import { Editor, Frame, Element } from "@craftjs/core";
@@ -59,8 +61,7 @@ export default function CraftPage() {
         overflow: "hidden",
         ...craftPageStyles.container,
       }}
-    >
-      
+    >   
       <Snackbar open={open} autoHideDuration={3000} anchorOrigin={ {vertical: 'top', horizontal: 'center' }} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
           <AlertTitle>Success</AlertTitle>
@@ -78,6 +79,9 @@ export default function CraftPage() {
           MaterialTextField,
           MaterialChip,
           MaterialSwitch,
+          MaterialSelect,
+          MaterialRating,
+          
         }}
         style={{ height: "100%" }}
       >

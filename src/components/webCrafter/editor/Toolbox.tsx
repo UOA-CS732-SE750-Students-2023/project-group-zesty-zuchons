@@ -21,6 +21,8 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import StyleIcon from "@mui/icons-material/Style";
 import LabelIcon from "@mui/icons-material/Label";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 import {
   Card,
@@ -30,6 +32,8 @@ import {
   MaterialTextField,
   MaterialChip,
   MaterialSwitch,
+  MaterialSelect,
+  MaterialRating,
 } from "../pageComponents/exportComponents";
 
 export const Toolbox = () => {
@@ -143,6 +147,28 @@ export const Toolbox = () => {
             </DragIconButton>
           </WidgetTooltip>
         </Grid>
+        
+        <Grid container direction="column" item>
+          <WidgetTooltip title="MaterialSelect" placement="right">
+            <DragIconButton
+              aria-label="select"
+              ref={(ref) => connectors.create(ref, <MaterialSelect />)}
+            >
+              <ArrowDropDownIcon />
+            </DragIconButton>
+          </WidgetTooltip>
+        </Grid>
+
+        <Grid container direction="column" item>
+          <WidgetTooltip title="MaterialRating" placement="right">
+            <DragIconButton
+              aria-label="rating"
+              ref={(ref) => connectors.create(ref, <MaterialRating />)}
+            >
+              <StarRateIcon />
+            </DragIconButton>
+          </WidgetTooltip>
+        </Grid>
 
         <Grid container direction="column" item>
           <WidgetTooltip title="MaterialChip" placement="right">
@@ -154,7 +180,6 @@ export const Toolbox = () => {
             </DragIconButton>
           </WidgetTooltip>
         </Grid>
-
         <Grid container direction="column" item style={{borderBottom: "1px solid #bdbdbd", marginBottom: "20px"}}>
           <WidgetTooltip title="MaterialSwitch" placement="right">
             <DragIconButton
@@ -172,7 +197,6 @@ export const Toolbox = () => {
             </DragIconButton>
           </WidgetTooltip>
         </Grid>
-
         <Chip label="HTML" />
         <Grid container direction="column" item>
           <WidgetTooltip title="HTMLText" placement="right">
