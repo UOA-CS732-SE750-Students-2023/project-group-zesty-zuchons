@@ -236,7 +236,7 @@ export const Homepage = () => {
                   <AutoModeIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="Structured database for saveing your website and auto-loading feature for website for users"
+                  primary="Structured database for saving your website and auto-loading feature for website for users"
                   style={{ color: "#424242" }}
                 />
               </ListItem>
