@@ -27,6 +27,9 @@ export const MaterialSelect = ({
   label,
   variant,
   fullWidth,
+  item1,
+  item2,
+  item3,
 }) => {
   const {
     // declare connector in useNode() to enable drag for the component
@@ -38,7 +41,6 @@ export const MaterialSelect = ({
 
   const [hover, setHover] = useState(false);
   let canvasEditable = store.getState();
-
   return (
     <div ref={(ref) => connect(drag(ref))}>
       <FormControl
@@ -55,9 +57,9 @@ export const MaterialSelect = ({
         <MenuItem value="">
             <em>None</em>
         </MenuItem>
-        <MenuItem value={"Item 1"}>Item 1</MenuItem>
-        <MenuItem value={"Item 2"}>Item 2</MenuItem>
-        <MenuItem value={"Item 3"}>Item 3</MenuItem>
+        <MenuItem value={"1"}>{item1}</MenuItem>
+        <MenuItem value={"2"}>{item2}</MenuItem>
+        <MenuItem value={"3"}>{item3}</MenuItem>
       </Select>
       </FormControl>
     </div>
@@ -75,6 +77,9 @@ const MaterialSelectSettings = () => {
     label,
     variant,
     fullWidth,
+    item1,
+    item2,
+    item3,
   } = useNode((node) => ({
     props: node.data.props,
     size: node.data.props.size,
@@ -84,6 +89,9 @@ const MaterialSelectSettings = () => {
     label: node.data.props.label,
     variant: node.data.props.variant,
     fullWidth: node.data.props.fullWidth,
+    item1: node.data.props.item1,
+    item2: node.data.props.item2,
+    item3: node.data.props.item3,
   }));
   return (
     <div>
@@ -169,9 +177,48 @@ const MaterialSelectSettings = () => {
         </FormControl>
       </Typography>
 
-      {/* <Divider textAlign="left" style={{ paddingTop: "20px" }} color="#e0e0e0">
+      <Divider textAlign="left" style={{ paddingTop: "20px" }} color="#e0e0e0">
         <Chip size="small" variant="outlined" color="primary" label="items" />
-      </Divider> */}
+      </Divider>
+      <Typography component="div" variant="body1" mt={1}>
+        <FormControl size="small" component="fieldset" fullWidth>
+          <FormLabel component="legend">Item 1</FormLabel>
+          <TextField
+            id="item1-input"
+            value={props.item1}
+            onChange={(e) => {
+              setProp((props) => (props.item1 = e.target.value));
+            }}
+            style={componentDefaultStyle.settingPanelTextArea}
+          ></TextField>
+        </FormControl>
+      </Typography>
+      <Typography component="div" variant="body1" mt={1}>
+        <FormControl size="small" component="fieldset" fullWidth>
+          <FormLabel component="legend">Item 2</FormLabel>
+          <TextField
+            id="item2-input"
+            value={props.item2}
+            onChange={(e) => {
+              setProp((props) => (props.item2 = e.target.value));
+            }}
+            style={componentDefaultStyle.settingPanelTextArea}
+          ></TextField>
+        </FormControl>
+      </Typography>
+      <Typography component="div" variant="body1" mt={1}>
+        <FormControl size="small" component="fieldset" fullWidth>
+          <FormLabel component="legend">Item 3</FormLabel>
+          <TextField
+            id="item3-input"
+            value={props.item3}
+            onChange={(e) => {
+              setProp((props) => (props.item3 = e.target.value));
+            }}
+            style={componentDefaultStyle.settingPanelTextArea}
+          ></TextField>
+        </FormControl>
+      </Typography>
     </div>
   );
 };
@@ -186,6 +233,10 @@ MaterialSelect.craft = {
     margin: 5,
     variant: "outlined",
     fullWidth: "disable",
+    item1: "Item 1",
+    item2: "Item 2",
+    item3: "Item 3",
+
   },
   related: {
     settings: MaterialSelectSettings,
