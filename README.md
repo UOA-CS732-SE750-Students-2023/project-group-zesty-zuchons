@@ -3,8 +3,6 @@
 <p align="center">
   <img src="./assets/logo.svg" width="350" />
   <h1>An extensible lowcode website builder</h1>
-  <a href="https://img.shields.io/badge/License-GPLv3-blue.svg">
-    <img alt="Licence" src="https://img.shields.io/badge/License-GPLv3-blue.svg">
 </p>
 
 ## Features
@@ -77,6 +75,8 @@ The wiki can contains all meeting notes and major design decisions, rationale an
 <p align="center">
   <img src="./public/sc1.png"/>
   <img src="./public/sc2.png"/>
+  <img src="./public/sc3.png"/>
+  <img src="./public/sc4.png"/>
 </p>
 
 ## Contributors
