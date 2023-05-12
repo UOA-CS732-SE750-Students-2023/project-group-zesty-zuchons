@@ -11,7 +11,7 @@ Web Crafter is a low-code website building platform aimed to help people who don
 - Login with Google authentication
 - Provide basic widgets for user to buildup the website
 - Provide flexible drag-and-drop feature for people to add and modify the widget for their webpage in canvas
-- Styles and properfies of widget can be modified easily from setting panel
+- Styles and properfies of widget can be modified easily from setting panel. Including all the style and feature can be featured.
 - Modifiable and customizable switch/button/chip for multiple usage.
 - support event for some of the widget (e.g: support onclick event on button)
 - Auto loading for the canvas if user already saved one
