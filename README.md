@@ -14,7 +14,7 @@
 ## Features
 
 Web Crafter is a low-code website building platform aimed to help people who don't know website programing to buildup their own website by drag and drop.
-- Login with Google authentication (TODO)
+- Login with Google authentication
 - Provide basic widgets for user to buildup the website
 - Provide flexible drag-and-drop feature for people to add and modify the widget for their webpage in canvas
 - Styles and properfies of widget can be modified easily from setting panel
