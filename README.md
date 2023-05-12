@@ -15,12 +15,13 @@
 
 Web Crafter is a low-code website building platform aimed to help people who don't know website programing to buildup their own website by drag and drop.
 - Login with Google authentication
-- Provide basic widgets for user to buildup the website
-- Provide flexible drag-and-drop feature for people to add and modify the widget for their webpage in canvas
-- Styles and properfies of widget can be modified easily from setting panel
+- Provide basic widgets for user to buildup the website.
+- Provide flexible drag-and-drop feature for people to add and modify the widget for their webpage in canvas.
+- Styles and properfies of widget can be modified easily from setting panel.
 - Modifiable and customizable switch/button/chip for multiple usage.
-- support event for some of the widget (e.g: support onclick event on button)
-- Auto loading for the canvas if user already saved one
+- Support event for some of the widget (e.g: support onclick event on button).
+- Auto loading for the canvas if user already saved one.
+- Simple and easy to use, users can buildup their own website without much programming skills.
 
 
 ## Tech stacks
@@ -57,10 +58,6 @@ npm run build
 ```bash
 npm run start
 ```
-
-TODO: frontend and backend setup will be handled properly by `npm run start` command when the project is finished.
-
-Plan to merge every project setting up command into a single command.
 
 to run in dev mode:
 
