@@ -20,15 +20,25 @@ Web Crafter is a low-code website building platform aimed to help people who don
 - Styles and properfies of widget can be modified easily from setting panel
 - Modifiable and customizable switch/button/chip for multiple usage.
 - support event for some of the widget (e.g: support onclick event on button)
+- Auto loading for the canvas if user already saved one
 
 
 ## Tech stacks
-TODO
+
+The main Tech stacks we are using in this project are listed below:
+
+- craft.js: An opensource framework for building web builder application
+- material UI: Styling library used for both styling the application and widget in the application
+- vite: light-weighted frontend react CLI
+- node.js: open-source, cross-platform JavaScript runtime environment
+- express: minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications
+- Jest: testing framework designed to ensure correctness of any JavaScript codebase
+- Swagger: Dashbord for managing / testing backend APIs
 
 
 ## Running Project
 
-1. Setup environment.
+1. Setup nodejs environment, make sure MongoDB is installed on the computer.
 
 2. Install packages
 
@@ -74,7 +84,6 @@ Run `npm test` in the project root to execute the unit tests via [Jest](https://
 ## Wiki
 
 The wiki can contains all meeting notes and major design decisions, rationale and project management information.
-TODO...
 
 ## Contributors
 
