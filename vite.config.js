@@ -4,18 +4,12 @@ import react from "@vitejs/plugin-react-swc";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  test: {
-    globals: true,
-    environment: 'jsdom'
-  },
-  css: {
-    modules: {
-      localsConvention: "dashesOnly",
+  server: {
+    watch: {
+     usePolling: true,
     },
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-      },
-    },
-  },
+    host: true, // Here
+    strictPort: true,
+    port: 8080,
+  }
 });
