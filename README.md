@@ -81,7 +81,7 @@ The wiki can contains all meeting notes and major design decisions, rationale an
 
 ## Contributors
 
-- Zixuan Wen (zwen655)
+- Zixuan Wen / rafilo (zwen655)
 - Mianmian Zheng (mzhe930)
 - Ziqi Zhong (zzho500)
 - Yue Wang (wany359)
