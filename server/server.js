@@ -1,9 +1,14 @@
+'use strict';
+require("dotenv").config();
 const express = require("express");
 const routes = require("./routes");
 const mongoose = require("mongoose");
-const cors = require("cors");
+const cookieSession = require('cookie-session');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const user_info = require("./models/user");
 
-require("dotenv").config();
+// todo: implement webauthn with this project
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -40,16 +45,16 @@ mongoose
   });
 
 
-//user_infos entity defined
-const Schema = mongoose.Schema;
-//the some of the variable name are not defined
-const userSchema = new Schema({
-  userEmail:String,
-  familyName:String,
-  givenName:String,
-  userData:Object,
-});
-const user_info = mongoose.model('user_info', userSchema);
+// user_infos entity defined
+// const Schema = mongoose.Schema;
+// //the some of the variable name are not defined
+// const userSchema = new Schema({
+//   userEmail:String,
+//   familyName:String,
+//   givenName:String,
+//   userData:Object,
+// });
+// const user_info = mongoose.model('user_info', userSchema);
 
 //createUserInfo
 app.post('/createUserInfo', (req, res) => {
